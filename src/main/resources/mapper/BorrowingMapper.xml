@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccit.dao.BorrowingMapper">
+	<!-- Borrowing的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_Borrowing_Map" type="com.ccit.dml.Borrowing">
+		<id column="ID" property="iD" />
+		<result column="name" property="name" />
+		<result column="Money" property="money" />
+		<result column="Deadline" property="deadline" />
+		<result column="StartDate" property="startDate" />
+		<result column="PhoneNumber" property="phoneNumber" />
+		<result column="GuaranteeType" property="guaranteeType" />
+		<result column="AmountGuarantee" property="amountGuarantee" />
+		<result column="Purpose" property="purpose" />
+		<result column="Describ" property="describ" />
+		<result column="Conditio" property="conditio" />
+		<result column="State" property="state" />
+		<result column="Product_id" property="productId" />
+	</resultMap>
+
+	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+	<sql id="assist">
+		<where>
+			<foreach collection="require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- updateAssist用于更新数据查询辅助工具类,作用assist与一致 -->
+	<sql id="updateAssist">
+		<where>
+			<foreach collection="assist.require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- 数据库中表名为:borrowing的列名 -->
+	<sql id="borrowing_Column">
+		ID,name,Money,Deadline,StartDate,PhoneNumber,GuaranteeType,AmountGuarantee,Purpose,Describ,Conditio,State,Product_id
+	</sql>
+
+	<!--获得类名为:Borrowing对应的数据库表的数据总行数 -->
+	<select id="getBorrowingRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
+		select count(*) from borrowing
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</select>
+	
+	<!-- 获得类名为:Borrowing对应数据库中表的数据集合 -->
+	<select id="selectBorrowing" parameterType="com.common.Assist" resultMap="result_Borrowing_Map">
+		select
+		<if test="distinct !=null">${distinct}</if>
+		<choose>
+			<when test="resultColumn!=null">${resultColumn}</when>
+			<otherwise>
+				<include refid="borrowing_Column" />
+			</otherwise>
+		</choose>
+		from borrowing
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+		<if test="order !=null">${order}</if>
+		<choose>
+			<when test="startRow !=null and rowSize !=null">LIMIT #{startRow},#{rowSize} </when>
+			<when test="rowSize !=null">LIMIT #{rowSize}</when>
+		</choose>
+	</select>
+	<!-- 通过Borrowing的id获得对应数据库中表的数据对象 -->
+	<select id="selectBorrowingById" parameterType="String" resultMap="result_Borrowing_Map">
+		select
+		<include refid="borrowing_Column" />
+		from borrowing
+		where ID = #{id}
+	</select>
+	
+	<!-- 获得一个Borrowing对象,以参数Borrowing对象中不为空的属性作为条件进行查询 -->
+	<select id="selectBorrowingObjSingle" parameterType="com.ccit.dml.Borrowing" resultMap="result_Borrowing_Map">
+		select
+		<include refid="borrowing_Column" />
+		from borrowing
+		<where>
+		<if test="name != null"> and name = #{name}</if>
+		<if test="money != null"> and Money = #{money}</if>
+		<if test="deadline != null"> and Deadline = #{deadline}</if>
+		<if test="startDate != null"> and StartDate = #{startDate}</if>
+		<if test="phoneNumber != null"> and PhoneNumber = #{phoneNumber}</if>
+		<if test="guaranteeType != null"> and GuaranteeType = #{guaranteeType}</if>
+		<if test="amountGuarantee != null"> and AmountGuarantee = #{amountGuarantee}</if>
+		<if test="purpose != null"> and Purpose = #{purpose}</if>
+		<if test="describ != null"> and Describ = #{describ}</if>
+		<if test="conditio != null"> and Conditio = #{conditio}</if>
+		<if test="state != null"> and State = #{state}</if>
+		<if test="productId != null"> and Product_id = #{productId}</if>
+		<if test="iD != null"> and ID = #{iD} </if>
+		</where>
+		LIMIT 1
+	</select>
+	
+	<!-- 获得Borrowing对象,以参数Borrowing对象中不为空的属性作为条件进行查询 -->
+	<select id="selectBorrowingByObj" parameterType="com.ccit.dml.Borrowing" resultMap="result_Borrowing_Map">
+		select
+		<include refid="borrowing_Column" />
+		from borrowing
+		<where>
+		<if test="name != null"> and name = #{name}</if>
+		<if test="money != null"> and Money = #{money}</if>
+		<if test="deadline != null"> and Deadline = #{deadline}</if>
+		<if test="startDate != null"> and StartDate = #{startDate}</if>
+		<if test="phoneNumber != null"> and PhoneNumber = #{phoneNumber}</if>
+		<if test="guaranteeType != null"> and GuaranteeType = #{guaranteeType}</if>
+		<if test="amountGuarantee != null"> and AmountGuarantee = #{amountGuarantee}</if>
+		<if test="purpose != null"> and Purpose = #{purpose}</if>
+		<if test="describ != null"> and Describ = #{describ}</if>
+		<if test="conditio != null"> and Conditio = #{conditio}</if>
+		<if test="state != null"> and State = #{state}</if>
+		<if test="productId != null"> and Product_id = #{productId}</if>
+		<if test="iD != null"> and ID = #{iD} </if>
+		</where>
+	</select>
+
+	<!-- 将Borrowing插入到对应数据库的表中,包括属性值为null的数据 -->
+	<insert id="insertBorrowing" parameterType="com.ccit.dml.Borrowing">
+		insert into 
+		borrowing (ID,name,Money,Deadline,StartDate,PhoneNumber,GuaranteeType,AmountGuarantee,Purpose,Describ,Conditio,State,Product_id) 
+		values(#{iD},#{name},#{money},#{deadline},#{startDate},#{phoneNumber},#{guaranteeType},#{amountGuarantee},#{purpose},#{describ},#{conditio},#{state},#{productId})
+	</insert>
+
+	<!-- 将Borrowing中属性值不为null的数据,插入到对应数据库的表中 -->
+	<insert id="insertNotNullBorrowing" parameterType="com.ccit.dml.Borrowing">
+		insert into borrowing
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="iD != null">ID,</if>
+			<if test="name != null">name,</if>
+			<if test="money != null">Money,</if>
+			<if test="deadline != null">Deadline,</if>
+			<if test="startDate != null">StartDate,</if>
+			<if test="phoneNumber != null">PhoneNumber,</if>
+			<if test="guaranteeType != null">GuaranteeType,</if>
+			<if test="amountGuarantee != null">AmountGuarantee,</if>
+			<if test="purpose != null">Purpose,</if>
+			<if test="describ != null">Describ,</if>
+			<if test="conditio != null">Conditio,</if>
+			<if test="state != null">State,</if>
+			<if test="productId != null">Product_id,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="iD != null">#{iD},</if>
+			<if test="name != null">#{name},</if>
+			<if test="money != null">#{money},</if>
+			<if test="deadline != null">#{deadline},</if>
+			<if test="startDate != null">#{startDate},</if>
+			<if test="phoneNumber != null">#{phoneNumber},</if>
+			<if test="guaranteeType != null">#{guaranteeType},</if>
+			<if test="amountGuarantee != null">#{amountGuarantee},</if>
+			<if test="purpose != null">#{purpose},</if>
+			<if test="describ != null">#{describ},</if>
+			<if test="conditio != null">#{conditio},</if>
+			<if test="state != null">#{state},</if>
+			<if test="productId != null">#{productId},</if>
+		</trim>
+	</insert>
+
+	<!-- 将Borrowing批量插入到对应数据库的表中 -->
+	<insert id="insertBorrowingByBatch" parameterType="ArrayList">
+		insert into borrowing(ID,name,Money,Deadline,StartDate,PhoneNumber,GuaranteeType,AmountGuarantee,Purpose,Describ,Conditio,State,Product_id) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{iD},#{name},#{money},#{deadline},#{startDate},#{phoneNumber},#{guaranteeType},#{amountGuarantee},#{purpose},#{describ},#{conditio},#{state},#{productId})
+		</foreach>
+	</insert>
+	
+	<!-- 通过Borrowing的id将数据库表中对应的数据删除 -->
+	<delete id="deleteBorrowingById" parameterType="String">
+		delete from borrowing
+		where  ID  =  #{id}
+	</delete>
+
+	<!-- 通过辅助工具Assist中的条件将Borrowing对应的数据库表的数据删除 -->
+	<delete id="deleteBorrowingByAssist" parameterType="com.common.Assist">
+		delete from borrowing
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</delete>
+	
+	<!-- 通过Borrowing的id将Borrowing的数据更新到数据库中对应的表,包括值null的数据 -->
+	<update id="updateBorrowingById" parameterType="com.ccit.dml.Borrowing"> 
+		update borrowing set
+		<set>
+			name = #{name} , 
+			Money = #{money} , 
+			Deadline = #{deadline} , 
+			StartDate = #{startDate} , 
+			PhoneNumber = #{phoneNumber} , 
+			GuaranteeType = #{guaranteeType} , 
+			AmountGuarantee = #{amountGuarantee} , 
+			Purpose = #{purpose} , 
+			Describ = #{describ} , 
+			Conditio = #{conditio} , 
+			State = #{state} , 
+			Product_id = #{productId} , 
+		</set>
+		where ID = #{iD}
+	</update>
+	
+	<!-- 通过Borrowing的id将Borrowing中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullBorrowingById" parameterType="com.ccit.dml.Borrowing">
+		update borrowing
+		<set>
+					<if test="name != null">name = #{name},</if>
+					<if test="money != null">Money = #{money},</if>
+					<if test="deadline != null">Deadline = #{deadline},</if>
+					<if test="startDate != null">StartDate = #{startDate},</if>
+					<if test="phoneNumber != null">PhoneNumber = #{phoneNumber},</if>
+					<if test="guaranteeType != null">GuaranteeType = #{guaranteeType},</if>
+					<if test="amountGuarantee != null">AmountGuarantee = #{amountGuarantee},</if>
+					<if test="purpose != null">Purpose = #{purpose},</if>
+					<if test="describ != null">Describ = #{describ},</if>
+					<if test="conditio != null">Conditio = #{conditio},</if>
+					<if test="state != null">State = #{state},</if>
+					<if test="productId != null">Product_id = #{productId},</if>
+		</set>
+		where ID = #{iD}
+	</update>
+	
+	<!-- 通过辅助工具Assist中的条件将Borrowing中的数据更新到数据库对应的表中,包括值为null的数据 -->
+	<update id="updateBorrowing" parameterType="map">
+		update borrowing
+		<set>
+			ID = #{enti.iD},
+			name = #{enti.name},
+			Money = #{enti.money},
+			Deadline = #{enti.deadline},
+			StartDate = #{enti.startDate},
+			PhoneNumber = #{enti.phoneNumber},
+			GuaranteeType = #{enti.guaranteeType},
+			AmountGuarantee = #{enti.amountGuarantee},
+			Purpose = #{enti.purpose},
+			Describ = #{enti.describ},
+			Conditio = #{enti.conditio},
+			State = #{enti.state},
+			Product_id = #{enti.productId},
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+
+	<!-- 通过辅助工具Assist中的条件将Borrowing中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullBorrowing" parameterType="map">
+		update borrowing
+		<set>
+			<if test="enti.iD != null">ID = #{enti.iD},</if>
+			<if test="enti.name != null">name = #{enti.name},</if>
+			<if test="enti.money != null">Money = #{enti.money},</if>
+			<if test="enti.deadline != null">Deadline = #{enti.deadline},</if>
+			<if test="enti.startDate != null">StartDate = #{enti.startDate},</if>
+			<if test="enti.phoneNumber != null">PhoneNumber = #{enti.phoneNumber},</if>
+			<if test="enti.guaranteeType != null">GuaranteeType = #{enti.guaranteeType},</if>
+			<if test="enti.amountGuarantee != null">AmountGuarantee = #{enti.amountGuarantee},</if>
+			<if test="enti.purpose != null">Purpose = #{enti.purpose},</if>
+			<if test="enti.describ != null">Describ = #{enti.describ},</if>
+			<if test="enti.conditio != null">Conditio = #{enti.conditio},</if>
+			<if test="enti.state != null">State = #{enti.state},</if>
+			<if test="enti.productId != null">Product_id = #{enti.productId},</if>
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+</mapper>

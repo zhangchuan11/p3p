@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccit.dao.CapitalMapper">
+	<!-- Capital的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_Capital_Map" type="com.ccit.dml.Capital">
+		<id column="ID" property="iD" />
+		<result column="Balance" property="balance" />
+		<result column="blockedBalances" property="blockedBalances" />
+	</resultMap>
+
+	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+	<sql id="assist">
+		<where>
+			<foreach collection="require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- updateAssist用于更新数据查询辅助工具类,作用assist与一致 -->
+	<sql id="updateAssist">
+		<where>
+			<foreach collection="assist.require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- 数据库中表名为:capital的列名 -->
+	<sql id="capital_Column">
+		ID,Balance,blockedBalances
+	</sql>
+
+	<!--获得类名为:Capital对应的数据库表的数据总行数 -->
+	<select id="getCapitalRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
+		select count(*) from capital
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</select>
+	
+	<!-- 获得类名为:Capital对应数据库中表的数据集合 -->
+	<select id="selectCapital" parameterType="com.common.Assist" resultMap="result_Capital_Map">
+		select
+		<if test="distinct !=null">${distinct}</if>
+		<choose>
+			<when test="resultColumn!=null">${resultColumn}</when>
+			<otherwise>
+				<include refid="capital_Column" />
+			</otherwise>
+		</choose>
+		from capital
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+		<if test="order !=null">${order}</if>
+		<choose>
+			<when test="startRow !=null and rowSize !=null">LIMIT #{startRow},#{rowSize} </when>
+			<when test="rowSize !=null">LIMIT #{rowSize}</when>
+		</choose>
+	</select>
+	<!-- 通过Capital的id获得对应数据库中表的数据对象 -->
+	<select id="selectCapitalById" parameterType="String" resultMap="result_Capital_Map">
+		select
+		<include refid="capital_Column" />
+		from capital
+		where ID = #{id}
+	</select>
+	
+	<!-- 获得一个Capital对象,以参数Capital对象中不为空的属性作为条件进行查询 -->
+	<select id="selectCapitalObjSingle" parameterType="com.ccit.dml.Capital" resultMap="result_Capital_Map">
+		select
+		<include refid="capital_Column" />
+		from capital
+		<where>
+		<if test="balance != null"> and Balance = #{balance}</if>
+		<if test="blockedBalances != null"> and blockedBalances = #{blockedBalances}</if>
+		<if test="iD != null"> and ID = #{iD} </if>
+		</where>
+		LIMIT 1
+	</select>
+	
+	<!-- 获得Capital对象,以参数Capital对象中不为空的属性作为条件进行查询 -->
+	<select id="selectCapitalByObj" parameterType="com.ccit.dml.Capital" resultMap="result_Capital_Map">
+		select
+		<include refid="capital_Column" />
+		from capital
+		<where>
+		<if test="balance != null"> and Balance = #{balance}</if>
+		<if test="blockedBalances != null"> and blockedBalances = #{blockedBalances}</if>
+		<if test="iD != null"> and ID = #{iD} </if>
+		</where>
+	</select>
+
+	<!-- 将Capital插入到对应数据库的表中,包括属性值为null的数据 -->
+	<insert id="insertCapital" parameterType="com.ccit.dml.Capital">
+		insert into 
+		capital (ID,Balance,blockedBalances) 
+		values(#{iD},#{balance},#{blockedBalances})
+	</insert>
+
+	<!-- 将Capital中属性值不为null的数据,插入到对应数据库的表中 -->
+	<insert id="insertNotNullCapital" parameterType="com.ccit.dml.Capital">
+		insert into capital
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="iD != null">ID,</if>
+			<if test="balance != null">Balance,</if>
+			<if test="blockedBalances != null">blockedBalances,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="iD != null">#{iD},</if>
+			<if test="balance != null">#{balance},</if>
+			<if test="blockedBalances != null">#{blockedBalances},</if>
+		</trim>
+	</insert>
+
+	<!-- 将Capital批量插入到对应数据库的表中 -->
+	<insert id="insertCapitalByBatch" parameterType="ArrayList">
+		insert into capital(ID,Balance,blockedBalances) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{iD},#{balance},#{blockedBalances})
+		</foreach>
+	</insert>
+	
+	<!-- 通过Capital的id将数据库表中对应的数据删除 -->
+	<delete id="deleteCapitalById" parameterType="String">
+		delete from capital
+		where  ID  =  #{id}
+	</delete>
+
+	<!-- 通过辅助工具Assist中的条件将Capital对应的数据库表的数据删除 -->
+	<delete id="deleteCapitalByAssist" parameterType="com.common.Assist">
+		delete from capital
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</delete>
+	
+	<!-- 通过Capital的id将Capital的数据更新到数据库中对应的表,包括值null的数据 -->
+	<update id="updateCapitalById" parameterType="com.ccit.dml.Capital"> 
+		update capital set
+		<set>
+			Balance = #{balance} , 
+			blockedBalances = #{blockedBalances} , 
+		</set>
+		where ID = #{iD}
+	</update>
+	
+	<!-- 通过Capital的id将Capital中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullCapitalById" parameterType="com.ccit.dml.Capital">
+		update capital
+		<set>
+					<if test="balance != null">Balance = #{balance},</if>
+					<if test="blockedBalances != null">blockedBalances = #{blockedBalances},</if>
+		</set>
+		where ID = #{iD}
+	</update>
+	
+	<!-- 通过辅助工具Assist中的条件将Capital中的数据更新到数据库对应的表中,包括值为null的数据 -->
+	<update id="updateCapital" parameterType="map">
+		update capital
+		<set>
+			ID = #{enti.iD},
+			Balance = #{enti.balance},
+			blockedBalances = #{enti.blockedBalances},
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+
+	<!-- 通过辅助工具Assist中的条件将Capital中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullCapital" parameterType="map">
+		update capital
+		<set>
+			<if test="enti.iD != null">ID = #{enti.iD},</if>
+			<if test="enti.balance != null">Balance = #{enti.balance},</if>
+			<if test="enti.blockedBalances != null">blockedBalances = #{enti.blockedBalances},</if>
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+</mapper>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccit.dao.IndexpageMapper">
+	<!-- Indexpage的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_Indexpage_Map" type="com.ccit.dml.Indexpage">
+		<id column="ID" property="iD" />
+		<result column="Number" property="number" />
+		<result column="Trademark" property="trademark" />
+		<result column="Advertising" property="advertising" />
+		<result column="Notice" property="notice" />
+	</resultMap>
+
+	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+	<sql id="assist">
+		<where>
+			<foreach collection="require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- updateAssist用于更新数据查询辅助工具类,作用assist与一致 -->
+	<sql id="updateAssist">
+		<where>
+			<foreach collection="assist.require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- 数据库中表名为:indexpage的列名 -->
+	<sql id="indexpage_Column">
+		ID,Number,Trademark,Advertising,Notice
+	</sql>
+
+	<!--获得类名为:Indexpage对应的数据库表的数据总行数 -->
+	<select id="getIndexpageRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
+		select count(*) from indexpage
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</select>
+	
+	<!-- 获得类名为:Indexpage对应数据库中表的数据集合 -->
+	<select id="selectIndexpage" parameterType="com.common.Assist" resultMap="result_Indexpage_Map">
+		select
+		<if test="distinct !=null">${distinct}</if>
+		<choose>
+			<when test="resultColumn!=null">${resultColumn}</when>
+			<otherwise>
+				<include refid="indexpage_Column" />
+			</otherwise>
+		</choose>
+		from indexpage
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+		<if test="order !=null">${order}</if>
+		<choose>
+			<when test="startRow !=null and rowSize !=null">LIMIT #{startRow},#{rowSize} </when>
+			<when test="rowSize !=null">LIMIT #{rowSize}</when>
+		</choose>
+	</select>
+	<!-- 通过Indexpage的id获得对应数据库中表的数据对象 -->
+	<select id="selectIndexpageById" parameterType="String" resultMap="result_Indexpage_Map">
+		select
+		<include refid="indexpage_Column" />
+		from indexpage
+		where ID = #{id}
+	</select>
+	
+	<!-- 获得一个Indexpage对象,以参数Indexpage对象中不为空的属性作为条件进行查询 -->
+	<select id="selectIndexpageObjSingle" parameterType="com.ccit.dml.Indexpage" resultMap="result_Indexpage_Map">
+		select
+		<include refid="indexpage_Column" />
+		from indexpage
+		<where>
+		<if test="number != null"> and Number = #{number}</if>
+		<if test="trademark != null"> and Trademark = #{trademark}</if>
+		<if test="advertising != null"> and Advertising = #{advertising}</if>
+		<if test="notice != null"> and Notice = #{notice}</if>
+		<if test="iD != null"> and ID = #{iD} </if>
+		</where>
+		LIMIT 1
+	</select>
+	
+	<!-- 获得Indexpage对象,以参数Indexpage对象中不为空的属性作为条件进行查询 -->
+	<select id="selectIndexpageByObj" parameterType="com.ccit.dml.Indexpage" resultMap="result_Indexpage_Map">
+		select
+		<include refid="indexpage_Column" />
+		from indexpage
+		<where>
+		<if test="number != null"> and Number = #{number}</if>
+		<if test="trademark != null"> and Trademark = #{trademark}</if>
+		<if test="advertising != null"> and Advertising = #{advertising}</if>
+		<if test="notice != null"> and Notice = #{notice}</if>
+		<if test="iD != null"> and ID = #{iD} </if>
+		</where>
+	</select>
+
+	<!-- 将Indexpage插入到对应数据库的表中,包括属性值为null的数据 -->
+	<insert id="insertIndexpage" parameterType="com.ccit.dml.Indexpage">
+		insert into 
+		indexpage (ID,Number,Trademark,Advertising,Notice) 
+		values(#{iD},#{number},#{trademark},#{advertising},#{notice})
+	</insert>
+
+	<!-- 将Indexpage中属性值不为null的数据,插入到对应数据库的表中 -->
+	<insert id="insertNotNullIndexpage" parameterType="com.ccit.dml.Indexpage">
+		insert into indexpage
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="iD != null">ID,</if>
+			<if test="number != null">Number,</if>
+			<if test="trademark != null">Trademark,</if>
+			<if test="advertising != null">Advertising,</if>
+			<if test="notice != null">Notice,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="iD != null">#{iD},</if>
+			<if test="number != null">#{number},</if>
+			<if test="trademark != null">#{trademark},</if>
+			<if test="advertising != null">#{advertising},</if>
+			<if test="notice != null">#{notice},</if>
+		</trim>
+	</insert>
+
+	<!-- 将Indexpage批量插入到对应数据库的表中 -->
+	<insert id="insertIndexpageByBatch" parameterType="ArrayList">
+		insert into indexpage(ID,Number,Trademark,Advertising,Notice) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{iD},#{number},#{trademark},#{advertising},#{notice})
+		</foreach>
+	</insert>
+	
+	<!-- 通过Indexpage的id将数据库表中对应的数据删除 -->
+	<delete id="deleteIndexpageById" parameterType="String">
+		delete from indexpage
+		where  ID  =  #{id}
+	</delete>
+
+	<!-- 通过辅助工具Assist中的条件将Indexpage对应的数据库表的数据删除 -->
+	<delete id="deleteIndexpageByAssist" parameterType="com.common.Assist">
+		delete from indexpage
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</delete>
+	
+	<!-- 通过Indexpage的id将Indexpage的数据更新到数据库中对应的表,包括值null的数据 -->
+	<update id="updateIndexpageById" parameterType="com.ccit.dml.Indexpage"> 
+		update indexpage set
+		<set>
+			Number = #{number} , 
+			Trademark = #{trademark} , 
+			Advertising = #{advertising} , 
+			Notice = #{notice} , 
+		</set>
+		where ID = #{iD}
+	</update>
+	
+	<!-- 通过Indexpage的id将Indexpage中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullIndexpageById" parameterType="com.ccit.dml.Indexpage">
+		update indexpage
+		<set>
+					<if test="number != null">Number = #{number},</if>
+					<if test="trademark != null">Trademark = #{trademark},</if>
+					<if test="advertising != null">Advertising = #{advertising},</if>
+					<if test="notice != null">Notice = #{notice},</if>
+		</set>
+		where ID = #{iD}
+	</update>
+	
+	<!-- 通过辅助工具Assist中的条件将Indexpage中的数据更新到数据库对应的表中,包括值为null的数据 -->
+	<update id="updateIndexpage" parameterType="map">
+		update indexpage
+		<set>
+			ID = #{enti.iD},
+			Number = #{enti.number},
+			Trademark = #{enti.trademark},
+			Advertising = #{enti.advertising},
+			Notice = #{enti.notice},
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+
+	<!-- 通过辅助工具Assist中的条件将Indexpage中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullIndexpage" parameterType="map">
+		update indexpage
+		<set>
+			<if test="enti.iD != null">ID = #{enti.iD},</if>
+			<if test="enti.number != null">Number = #{enti.number},</if>
+			<if test="enti.trademark != null">Trademark = #{enti.trademark},</if>
+			<if test="enti.advertising != null">Advertising = #{enti.advertising},</if>
+			<if test="enti.notice != null">Notice = #{enti.notice},</if>
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+</mapper>

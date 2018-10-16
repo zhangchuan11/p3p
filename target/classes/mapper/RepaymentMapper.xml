@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccit.dao.RepaymentMapper">
+	<!-- Repayment的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_Repayment_Map" type="com.ccit.dml.Repayment">
+		<id column="id" property="id" />
+		<result column="R_name" property="rName" />
+		<result column="R_money" property="rMoney" />
+		<result column="R_Allmoney" property="rAllmoney" />
+		<result column="R_ResidueMoney" property="rResiduemoney" />
+		<result column="R_time" property="rTime" />
+		<result column="R_way" property="rWay" />
+		<result column="R_State" property="rState" />
+		<result column="R_Product_id" property="rProductId" />
+	</resultMap>
+
+	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+	<sql id="assist">
+		<where>
+			<foreach collection="require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- updateAssist用于更新数据查询辅助工具类,作用assist与一致 -->
+	<sql id="updateAssist">
+		<where>
+			<foreach collection="assist.require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- 数据库中表名为:repayment的列名 -->
+	<sql id="repayment_Column">
+		id,R_name,R_money,R_Allmoney,R_ResidueMoney,R_time,R_way,R_State,R_Product_id
+	</sql>
+
+	<!--获得类名为:Repayment对应的数据库表的数据总行数 -->
+	<select id="getRepaymentRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
+		select count(*) from repayment
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</select>
+	
+	<!-- 获得类名为:Repayment对应数据库中表的数据集合 -->
+	<select id="selectRepayment" parameterType="com.common.Assist" resultMap="result_Repayment_Map">
+		select
+		<if test="distinct !=null">${distinct}</if>
+		<choose>
+			<when test="resultColumn!=null">${resultColumn}</when>
+			<otherwise>
+				<include refid="repayment_Column" />
+			</otherwise>
+		</choose>
+		from repayment
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+		<if test="order !=null">${order}</if>
+		<choose>
+			<when test="startRow !=null and rowSize !=null">LIMIT #{startRow},#{rowSize} </when>
+			<when test="rowSize !=null">LIMIT #{rowSize}</when>
+		</choose>
+	</select>
+	<!-- 通过Repayment的id获得对应数据库中表的数据对象 -->
+	<select id="selectRepaymentById" parameterType="String" resultMap="result_Repayment_Map">
+		select
+		<include refid="repayment_Column" />
+		from repayment
+		where id = #{id}
+	</select>
+	
+	<!-- 获得一个Repayment对象,以参数Repayment对象中不为空的属性作为条件进行查询 -->
+	<select id="selectRepaymentObjSingle" parameterType="com.ccit.dml.Repayment" resultMap="result_Repayment_Map">
+		select
+		<include refid="repayment_Column" />
+		from repayment
+		<where>
+		<if test="rName != null"> and R_name = #{rName}</if>
+		<if test="rMoney != null"> and R_money = #{rMoney}</if>
+		<if test="rAllmoney != null"> and R_Allmoney = #{rAllmoney}</if>
+		<if test="rResiduemoney != null"> and R_ResidueMoney = #{rResiduemoney}</if>
+		<if test="rTime != null"> and R_time = #{rTime}</if>
+		<if test="rWay != null"> and R_way = #{rWay}</if>
+		<if test="rState != null"> and R_State = #{rState}</if>
+		<if test="rProductId != null"> and R_Product_id = #{rProductId}</if>
+		<if test="id != null"> and id = #{id} </if>
+		</where>
+		LIMIT 1
+	</select>
+	
+	<!-- 获得Repayment对象,以参数Repayment对象中不为空的属性作为条件进行查询 -->
+	<select id="selectRepaymentByObj" parameterType="com.ccit.dml.Repayment" resultMap="result_Repayment_Map">
+		select
+		<include refid="repayment_Column" />
+		from repayment
+		<where>
+		<if test="rName != null"> and R_name = #{rName}</if>
+		<if test="rMoney != null"> and R_money = #{rMoney}</if>
+		<if test="rAllmoney != null"> and R_Allmoney = #{rAllmoney}</if>
+		<if test="rResiduemoney != null"> and R_ResidueMoney = #{rResiduemoney}</if>
+		<if test="rTime != null"> and R_time = #{rTime}</if>
+		<if test="rWay != null"> and R_way = #{rWay}</if>
+		<if test="rState != null"> and R_State = #{rState}</if>
+		<if test="rProductId != null"> and R_Product_id = #{rProductId}</if>
+		<if test="id != null"> and id = #{id} </if>
+		</where>
+	</select>
+
+	<!-- 将Repayment插入到对应数据库的表中,包括属性值为null的数据 -->
+	<insert id="insertRepayment" parameterType="com.ccit.dml.Repayment">
+		insert into 
+		repayment (id,R_name,R_money,R_Allmoney,R_ResidueMoney,R_time,R_way,R_State,R_Product_id) 
+		values(#{id},#{rName},#{rMoney},#{rAllmoney},#{rResiduemoney},#{rTime},#{rWay},#{rState},#{rProductId})
+	</insert>
+
+	<!-- 将Repayment中属性值不为null的数据,插入到对应数据库的表中 -->
+	<insert id="insertNotNullRepayment" parameterType="com.ccit.dml.Repayment">
+		insert into repayment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="rName != null">R_name,</if>
+			<if test="rMoney != null">R_money,</if>
+			<if test="rAllmoney != null">R_Allmoney,</if>
+			<if test="rResiduemoney != null">R_ResidueMoney,</if>
+			<if test="rTime != null">R_time,</if>
+			<if test="rWay != null">R_way,</if>
+			<if test="rState != null">R_State,</if>
+			<if test="rProductId != null">R_Product_id,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="rName != null">#{rName},</if>
+			<if test="rMoney != null">#{rMoney},</if>
+			<if test="rAllmoney != null">#{rAllmoney},</if>
+			<if test="rResiduemoney != null">#{rResiduemoney},</if>
+			<if test="rTime != null">#{rTime},</if>
+			<if test="rWay != null">#{rWay},</if>
+			<if test="rState != null">#{rState},</if>
+			<if test="rProductId != null">#{rProductId},</if>
+		</trim>
+	</insert>
+
+	<!-- 将Repayment批量插入到对应数据库的表中 -->
+	<insert id="insertRepaymentByBatch" parameterType="ArrayList">
+		insert into repayment(id,R_name,R_money,R_Allmoney,R_ResidueMoney,R_time,R_way,R_State,R_Product_id) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{id},#{rName},#{rMoney},#{rAllmoney},#{rResiduemoney},#{rTime},#{rWay},#{rState},#{rProductId})
+		</foreach>
+	</insert>
+	
+	<!-- 通过Repayment的id将数据库表中对应的数据删除 -->
+	<delete id="deleteRepaymentById" parameterType="String">
+		delete from repayment
+		where  id  =  #{id}
+	</delete>
+
+	<!-- 通过辅助工具Assist中的条件将Repayment对应的数据库表的数据删除 -->
+	<delete id="deleteRepaymentByAssist" parameterType="com.common.Assist">
+		delete from repayment
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</delete>
+	
+	<!-- 通过Repayment的id将Repayment的数据更新到数据库中对应的表,包括值null的数据 -->
+	<update id="updateRepaymentById" parameterType="com.ccit.dml.Repayment"> 
+		update repayment set
+		<set>
+			R_name = #{rName} , 
+			R_money = #{rMoney} , 
+			R_Allmoney = #{rAllmoney} , 
+			R_ResidueMoney = #{rResiduemoney} , 
+			R_time = #{rTime} , 
+			R_way = #{rWay} , 
+			R_State = #{rState} , 
+			R_Product_id = #{rProductId} , 
+		</set>
+		where id = #{id}
+	</update>
+	
+	<!-- 通过Repayment的id将Repayment中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullRepaymentById" parameterType="com.ccit.dml.Repayment">
+		update repayment
+		<set>
+					<if test="rName != null">R_name = #{rName},</if>
+					<if test="rMoney != null">R_money = #{rMoney},</if>
+					<if test="rAllmoney != null">R_Allmoney = #{rAllmoney},</if>
+					<if test="rResiduemoney != null">R_ResidueMoney = #{rResiduemoney},</if>
+					<if test="rTime != null">R_time = #{rTime},</if>
+					<if test="rWay != null">R_way = #{rWay},</if>
+					<if test="rState != null">R_State = #{rState},</if>
+					<if test="rProductId != null">R_Product_id = #{rProductId},</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<!-- 通过辅助工具Assist中的条件将Repayment中的数据更新到数据库对应的表中,包括值为null的数据 -->
+	<update id="updateRepayment" parameterType="map">
+		update repayment
+		<set>
+			id = #{enti.id},
+			R_name = #{enti.rName},
+			R_money = #{enti.rMoney},
+			R_Allmoney = #{enti.rAllmoney},
+			R_ResidueMoney = #{enti.rResiduemoney},
+			R_time = #{enti.rTime},
+			R_way = #{enti.rWay},
+			R_State = #{enti.rState},
+			R_Product_id = #{enti.rProductId},
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+
+	<!-- 通过辅助工具Assist中的条件将Repayment中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullRepayment" parameterType="map">
+		update repayment
+		<set>
+			<if test="enti.id != null">id = #{enti.id},</if>
+			<if test="enti.rName != null">R_name = #{enti.rName},</if>
+			<if test="enti.rMoney != null">R_money = #{enti.rMoney},</if>
+			<if test="enti.rAllmoney != null">R_Allmoney = #{enti.rAllmoney},</if>
+			<if test="enti.rResiduemoney != null">R_ResidueMoney = #{enti.rResiduemoney},</if>
+			<if test="enti.rTime != null">R_time = #{enti.rTime},</if>
+			<if test="enti.rWay != null">R_way = #{enti.rWay},</if>
+			<if test="enti.rState != null">R_State = #{enti.rState},</if>
+			<if test="enti.rProductId != null">R_Product_id = #{enti.rProductId},</if>
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+</mapper>

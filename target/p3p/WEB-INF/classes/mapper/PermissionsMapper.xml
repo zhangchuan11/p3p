@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccit.dao.PermissionsMapper">
+	<!-- Permissions的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_Permissions_Map" type="com.ccit.dml.Permissions">
+		<id column="ID" property="iD" />
+		<result column="auth_name" property="authName" />
+		<result column="State" property="state" />
+		<result column="iconCls" property="iconCls" />
+		<result column="Pid" property="pid" />
+		<result column="Controller" property="controller" />
+	</resultMap>
+
+	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+	<sql id="assist">
+		<where>
+			<foreach collection="require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- updateAssist用于更新数据查询辅助工具类,作用assist与一致 -->
+	<sql id="updateAssist">
+		<where>
+			<foreach collection="assist.require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- 数据库中表名为:permissions的列名 -->
+	<sql id="permissions_Column">
+		ID,auth_name,State,iconCls,Pid,Controller
+	</sql>
+
+	<!--获得类名为:Permissions对应的数据库表的数据总行数 -->
+	<select id="getPermissionsRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
+		select count(*) from permissions
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</select>
+	
+	<!-- 获得类名为:Permissions对应数据库中表的数据集合 -->
+	<select id="selectPermissions" parameterType="com.common.Assist" resultMap="result_Permissions_Map">
+		select
+		<if test="distinct !=null">${distinct}</if>
+		<choose>
+			<when test="resultColumn!=null">${resultColumn}</when>
+			<otherwise>
+				<include refid="permissions_Column" />
+			</otherwise>
+		</choose>
+		from permissions
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+		<if test="order !=null">${order}</if>
+		<choose>
+			<when test="startRow !=null and rowSize !=null">LIMIT #{startRow},#{rowSize} </when>
+			<when test="rowSize !=null">LIMIT #{rowSize}</when>
+		</choose>
+	</select>
+	<!-- 通过Permissions的id获得对应数据库中表的数据对象 -->
+	<select id="selectPermissionsById" parameterType="String" resultMap="result_Permissions_Map">
+		select
+		<include refid="permissions_Column" />
+		from permissions
+		where ID = #{id}
+	</select>
+	
+	<!-- 获得一个Permissions对象,以参数Permissions对象中不为空的属性作为条件进行查询 -->
+	<select id="selectPermissionsObjSingle" parameterType="com.ccit.dml.Permissions" resultMap="result_Permissions_Map">
+		select
+		<include refid="permissions_Column" />
+		from permissions
+		<where>
+		<if test="authName != null"> and auth_name = #{authName}</if>
+		<if test="state != null"> and State = #{state}</if>
+		<if test="iconCls != null"> and iconCls = #{iconCls}</if>
+		<if test="pid != null"> and Pid = #{pid}</if>
+		<if test="controller != null"> and Controller = #{controller}</if>
+		<if test="iD != null"> and ID = #{iD} </if>
+		</where>
+		LIMIT 1
+	</select>
+	
+	<!-- 获得Permissions对象,以参数Permissions对象中不为空的属性作为条件进行查询 -->
+	<select id="selectPermissionsByObj" parameterType="com.ccit.dml.Permissions" resultMap="result_Permissions_Map">
+		select
+		<include refid="permissions_Column" />
+		from permissions
+		<where>
+		<if test="authName != null"> and auth_name = #{authName}</if>
+		<if test="state != null"> and State = #{state}</if>
+		<if test="iconCls != null"> and iconCls = #{iconCls}</if>
+		<if test="pid != null"> and Pid = #{pid}</if>
+		<if test="controller != null"> and Controller = #{controller}</if>
+		<if test="iD != null"> and ID = #{iD} </if>
+		</where>
+	</select>
+
+	<!-- 将Permissions插入到对应数据库的表中,包括属性值为null的数据 -->
+	<insert id="insertPermissions" parameterType="com.ccit.dml.Permissions">
+		insert into 
+		permissions (ID,auth_name,State,iconCls,Pid,Controller) 
+		values(#{iD},#{authName},#{state},#{iconCls},#{pid},#{controller})
+	</insert>
+
+	<!-- 将Permissions中属性值不为null的数据,插入到对应数据库的表中 -->
+	<insert id="insertNotNullPermissions" parameterType="com.ccit.dml.Permissions">
+		insert into permissions
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="iD != null">ID,</if>
+			<if test="authName != null">auth_name,</if>
+			<if test="state != null">State,</if>
+			<if test="iconCls != null">iconCls,</if>
+			<if test="pid != null">Pid,</if>
+			<if test="controller != null">Controller,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="iD != null">#{iD},</if>
+			<if test="authName != null">#{authName},</if>
+			<if test="state != null">#{state},</if>
+			<if test="iconCls != null">#{iconCls},</if>
+			<if test="pid != null">#{pid},</if>
+			<if test="controller != null">#{controller},</if>
+		</trim>
+	</insert>
+
+	<!-- 将Permissions批量插入到对应数据库的表中 -->
+	<insert id="insertPermissionsByBatch" parameterType="ArrayList">
+		insert into permissions(ID,auth_name,State,iconCls,Pid,Controller) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{iD},#{authName},#{state},#{iconCls},#{pid},#{controller})
+		</foreach>
+	</insert>
+	
+	<!-- 通过Permissions的id将数据库表中对应的数据删除 -->
+	<delete id="deletePermissionsById" parameterType="String">
+		delete from permissions
+		where  ID  =  #{id}
+	</delete>
+
+	<!-- 通过辅助工具Assist中的条件将Permissions对应的数据库表的数据删除 -->
+	<delete id="deletePermissionsByAssist" parameterType="com.common.Assist">
+		delete from permissions
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</delete>
+	
+	<!-- 通过Permissions的id将Permissions的数据更新到数据库中对应的表,包括值null的数据 -->
+	<update id="updatePermissionsById" parameterType="com.ccit.dml.Permissions"> 
+		update permissions set
+		<set>
+			auth_name = #{authName} , 
+			State = #{state} , 
+			iconCls = #{iconCls} , 
+			Pid = #{pid} , 
+			Controller = #{controller} , 
+		</set>
+		where ID = #{iD}
+	</update>
+	
+	<!-- 通过Permissions的id将Permissions中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullPermissionsById" parameterType="com.ccit.dml.Permissions">
+		update permissions
+		<set>
+					<if test="authName != null">auth_name = #{authName},</if>
+					<if test="state != null">State = #{state},</if>
+					<if test="iconCls != null">iconCls = #{iconCls},</if>
+					<if test="pid != null">Pid = #{pid},</if>
+					<if test="controller != null">Controller = #{controller},</if>
+		</set>
+		where ID = #{iD}
+	</update>
+	
+	<!-- 通过辅助工具Assist中的条件将Permissions中的数据更新到数据库对应的表中,包括值为null的数据 -->
+	<update id="updatePermissions" parameterType="map">
+		update permissions
+		<set>
+			ID = #{enti.iD},
+			auth_name = #{enti.authName},
+			State = #{enti.state},
+			iconCls = #{enti.iconCls},
+			Pid = #{enti.pid},
+			Controller = #{enti.controller},
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+
+	<!-- 通过辅助工具Assist中的条件将Permissions中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullPermissions" parameterType="map">
+		update permissions
+		<set>
+			<if test="enti.iD != null">ID = #{enti.iD},</if>
+			<if test="enti.authName != null">auth_name = #{enti.authName},</if>
+			<if test="enti.state != null">State = #{enti.state},</if>
+			<if test="enti.iconCls != null">iconCls = #{enti.iconCls},</if>
+			<if test="enti.pid != null">Pid = #{enti.pid},</if>
+			<if test="enti.controller != null">Controller = #{enti.controller},</if>
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+</mapper>
