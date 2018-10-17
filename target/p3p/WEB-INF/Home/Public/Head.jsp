@@ -15,6 +15,7 @@
 <script type="text/javascript" src="./lib/easyui-1.6.6/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="./lib/js/register.js"></script>
 <script type="text/javascript" src="./lib/easyui-1.6.6/jquery.form.min.js"></script>
+<script type="text/javascript" src="./lib/js/borrow_index.js"></script>
 </head>
 <body>
 

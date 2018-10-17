@@ -14,17 +14,17 @@ public class Borrowing {
 	/**借款人姓名*/
 	private String name; 
 	/**借款金额*/
-	private Double money; 
+	private String  money;
 	/**借款日期*/
 	private String deadline; 
 	/**还款日期*/
 	private String startDate; 
 	/**电话号码*/
-	private Integer phoneNumber; 
+	private String  phoneNumber;
 	/**担保方式*/
 	private String guaranteeType; 
 	/**总价值*/
-	private Double amountGuarantee; 
+	private String amountGuarantee;
 	/**借款用途*/
 	private String purpose; 
 	/**借款描述*/
@@ -54,8 +54,8 @@ public class Borrowing {
 		if (obj.get("name") instanceof String) {
 			this.setName((String) obj.get("name"));
 		}
-		if (obj.get("money") instanceof Number) {
-			this.setMoney(((Number) obj.get("money")).doubleValue());
+		if (obj.get("money") instanceof String) {
+			this.setMoney((String) obj.get("money"));
 		}
 		if (obj.get("deadline") instanceof String) {
 			this.setDeadline((String) obj.get("deadline"));
@@ -63,14 +63,14 @@ public class Borrowing {
 		if (obj.get("startDate") instanceof String) {
 			this.setStartDate((String) obj.get("startDate"));
 		}
-		if (obj.get("phoneNumber") instanceof Number) {
-			this.setPhoneNumber(((Number) obj.get("phoneNumber")).intValue());
+		if (obj.get("phoneNumber") instanceof String) {
+			this.setPhoneNumber((String) obj.get("phoneNumber"));
 		}
 		if (obj.get("guaranteeType") instanceof String) {
 			this.setGuaranteeType((String) obj.get("guaranteeType"));
 		}
-		if (obj.get("amountGuarantee") instanceof Number) {
-			this.setAmountGuarantee(((Number) obj.get("amountGuarantee")).doubleValue());
+		if (obj.get("amountGuarantee") instanceof String) {
+			this.setAmountGuarantee((String) obj.get("amountGuarantee"));
 		}
 		if (obj.get("purpose") instanceof String) {
 			this.setPurpose((String) obj.get("purpose"));
@@ -88,8 +88,10 @@ public class Borrowing {
 			this.setProductId((String) obj.get("productId"));
 		}
 	}
-	
-	/**
+
+
+
+    /**
 	 * 将当前对象转换为JsonObject
 	 * 
 	 * @return
@@ -180,16 +182,16 @@ public class Borrowing {
 	 * 
 	 * @return
 	 */
-	public Double getMoney() {
+	public String getMoney() {
 		return money;
 	}
 
 	/**
 	 * 设置money
-	 * 
-	 * @param money
-	 */
-	public void setMoney(Double money) {
+	 *
+     * @param money
+     */
+	public void setMoney(String money) {
 		this.money = money;
 	}
 	
@@ -234,7 +236,7 @@ public class Borrowing {
 	 * 
 	 * @return
 	 */
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -243,7 +245,7 @@ public class Borrowing {
 	 * 
 	 * @param phoneNumber
 	 */
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String  phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
@@ -270,7 +272,7 @@ public class Borrowing {
 	 * 
 	 * @return
 	 */
-	public Double getAmountGuarantee() {
+	public String getAmountGuarantee() {
 		return amountGuarantee;
 	}
 
@@ -279,7 +281,7 @@ public class Borrowing {
 	 * 
 	 * @param amountGuarantee
 	 */
-	public void setAmountGuarantee(Double amountGuarantee) {
+	public void setAmountGuarantee(String amountGuarantee) {
 		this.amountGuarantee = amountGuarantee;
 	}
 	
