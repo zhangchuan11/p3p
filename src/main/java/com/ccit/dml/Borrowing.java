@@ -11,20 +11,20 @@ import com.alibaba.fastjson.JSONObject;
 public class Borrowing {
 	/**标识*/
 	private String iD; 
-	/**借款人姓名*/
-	private String name; 
+	/**借款人id*/
+	private String nameId; 
 	/**借款金额*/
-	private String  money;
-	/**借款日期*/
-	private String deadline; 
-	/**还款日期*/
-	private String startDate; 
+	private String money; 
+	/**发布日期*/
+	private String beginTime; 
+	/**结束日期*/
+	private String end; 
 	/**电话号码*/
-	private String  phoneNumber;
-	/**担保方式*/
-	private String guaranteeType; 
+	private String phoneNumber; 
+	/**担保证明*/
+	private String guarantee; 
 	/**总价值*/
-	private String amountGuarantee;
+	private String amountGuarantee; 
 	/**借款用途*/
 	private String purpose; 
 	/**借款描述*/
@@ -33,8 +33,18 @@ public class Borrowing {
 	private String conditio; 
 	/**状态*/
 	private String state; 
-	/**借款产品*/
-	private String productId; 
+	/**保障机构*/
+	private String guarantors; 
+	/**信用等级条件*/
+	private String credit; 
+	/**利率*/
+	private String reta; 
+	/**期限*/
+	private String deadTime; 
+	/**还款方式*/
+	private String rmoneytype; 
+	/**借款类型*/
+	private String product; 
 	/**
 	 * 实例化
 	 */
@@ -51,23 +61,23 @@ public class Borrowing {
 		if (obj.get("iD") instanceof String) {
 			this.setID((String) obj.get("iD"));
 		}
-		if (obj.get("name") instanceof String) {
-			this.setName((String) obj.get("name"));
+		if (obj.get("nameId") instanceof String) {
+			this.setNameId((String) obj.get("nameId"));
 		}
 		if (obj.get("money") instanceof String) {
 			this.setMoney((String) obj.get("money"));
 		}
-		if (obj.get("deadline") instanceof String) {
-			this.setDeadline((String) obj.get("deadline"));
+		if (obj.get("beginTime") instanceof String) {
+			this.setBeginTime((String) obj.get("beginTime"));
 		}
-		if (obj.get("startDate") instanceof String) {
-			this.setStartDate((String) obj.get("startDate"));
+		if (obj.get("end") instanceof String) {
+			this.setEnd((String) obj.get("end"));
 		}
 		if (obj.get("phoneNumber") instanceof String) {
 			this.setPhoneNumber((String) obj.get("phoneNumber"));
 		}
-		if (obj.get("guaranteeType") instanceof String) {
-			this.setGuaranteeType((String) obj.get("guaranteeType"));
+		if (obj.get("guarantee") instanceof String) {
+			this.setGuarantee((String) obj.get("guarantee"));
 		}
 		if (obj.get("amountGuarantee") instanceof String) {
 			this.setAmountGuarantee((String) obj.get("amountGuarantee"));
@@ -84,14 +94,27 @@ public class Borrowing {
 		if (obj.get("state") instanceof String) {
 			this.setState((String) obj.get("state"));
 		}
-		if (obj.get("productId") instanceof String) {
-			this.setProductId((String) obj.get("productId"));
+		if (obj.get("guarantors") instanceof String) {
+			this.setGuarantors((String) obj.get("guarantors"));
+		}
+		if (obj.get("credit") instanceof String) {
+			this.setCredit((String) obj.get("credit"));
+		}
+		if (obj.get("reta") instanceof String) {
+			this.setReta((String) obj.get("reta"));
+		}
+		if (obj.get("deadTime") instanceof String) {
+			this.setDeadTime((String) obj.get("deadTime"));
+		}
+		if (obj.get("rmoneytype") instanceof String) {
+			this.setRmoneytype((String) obj.get("rmoneytype"));
+		}
+		if (obj.get("product") instanceof String) {
+			this.setProduct((String) obj.get("product"));
 		}
 	}
-
-
-
-    /**
+	
+	/**
 	 * 将当前对象转换为JsonObject
 	 * 
 	 * @return
@@ -101,23 +124,23 @@ public class Borrowing {
 		if (this.getID() != null) {
 			result.put("iD",this.getID());
 		}
-		if (this.getName() != null) {
-			result.put("name",this.getName());
+		if (this.getNameId() != null) {
+			result.put("nameId",this.getNameId());
 		}
 		if (this.getMoney() != null) {
 			result.put("money",this.getMoney());
 		}
-		if (this.getDeadline() != null) {
-			result.put("deadline",this.getDeadline());
+		if (this.getBeginTime() != null) {
+			result.put("beginTime",this.getBeginTime());
 		}
-		if (this.getStartDate() != null) {
-			result.put("startDate",this.getStartDate());
+		if (this.getEnd() != null) {
+			result.put("end",this.getEnd());
 		}
 		if (this.getPhoneNumber() != null) {
 			result.put("phoneNumber",this.getPhoneNumber());
 		}
-		if (this.getGuaranteeType() != null) {
-			result.put("guaranteeType",this.getGuaranteeType());
+		if (this.getGuarantee() != null) {
+			result.put("guarantee",this.getGuarantee());
 		}
 		if (this.getAmountGuarantee() != null) {
 			result.put("amountGuarantee",this.getAmountGuarantee());
@@ -134,8 +157,23 @@ public class Borrowing {
 		if (this.getState() != null) {
 			result.put("state",this.getState());
 		}
-		if (this.getProductId() != null) {
-			result.put("productId",this.getProductId());
+		if (this.getGuarantors() != null) {
+			result.put("guarantors",this.getGuarantors());
+		}
+		if (this.getCredit() != null) {
+			result.put("credit",this.getCredit());
+		}
+		if (this.getReta() != null) {
+			result.put("reta",this.getReta());
+		}
+		if (this.getDeadTime() != null) {
+			result.put("deadTime",this.getDeadTime());
+		}
+		if (this.getRmoneytype() != null) {
+			result.put("rmoneytype",this.getRmoneytype());
+		}
+		if (this.getProduct() != null) {
+			result.put("product",this.getProduct());
 		}
 		return result;
 	}
@@ -160,21 +198,21 @@ public class Borrowing {
 	}
 	
 	/**
-	 * 获取name
+	 * 获取nameId
 	 * 
 	 * @return
 	 */
-	public String getName() {
-		return name;
+	public String getNameId() {
+		return nameId;
 	}
 
 	/**
-	 * 设置name
+	 * 设置nameId
 	 * 
-	 * @param name
+	 * @param nameId
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setNameId(String nameId) {
+		this.nameId = nameId;
 	}
 	
 	/**
@@ -188,47 +226,47 @@ public class Borrowing {
 
 	/**
 	 * 设置money
-	 *
-     * @param money
-     */
+	 * 
+	 * @param money
+	 */
 	public void setMoney(String money) {
 		this.money = money;
 	}
 	
 	/**
-	 * 获取deadline
+	 * 获取beginTime
 	 * 
 	 * @return
 	 */
-	public String getDeadline() {
-		return deadline;
+	public String getBeginTime() {
+		return beginTime;
 	}
 
 	/**
-	 * 设置deadline
+	 * 设置beginTime
 	 * 
-	 * @param deadline
+	 * @param beginTime
 	 */
-	public void setDeadline(String deadline) {
-		this.deadline = deadline;
+	public void setBeginTime(String beginTime) {
+		this.beginTime = beginTime;
 	}
 	
 	/**
-	 * 获取startDate
+	 * 获取end
 	 * 
 	 * @return
 	 */
-	public String getStartDate() {
-		return startDate;
+	public String getEnd() {
+		return end;
 	}
 
 	/**
-	 * 设置startDate
+	 * 设置end
 	 * 
-	 * @param startDate
+	 * @param end
 	 */
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setEnd(String end) {
+		this.end = end;
 	}
 	
 	/**
@@ -245,26 +283,26 @@ public class Borrowing {
 	 * 
 	 * @param phoneNumber
 	 */
-	public void setPhoneNumber(String  phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
 	/**
-	 * 获取guaranteeType
+	 * 获取guarantee
 	 * 
 	 * @return
 	 */
-	public String getGuaranteeType() {
-		return guaranteeType;
+	public String getGuarantee() {
+		return guarantee;
 	}
 
 	/**
-	 * 设置guaranteeType
+	 * 设置guarantee
 	 * 
-	 * @param guaranteeType
+	 * @param guarantee
 	 */
-	public void setGuaranteeType(String guaranteeType) {
-		this.guaranteeType = guaranteeType;
+	public void setGuarantee(String guarantee) {
+		this.guarantee = guarantee;
 	}
 	
 	/**
@@ -358,26 +396,116 @@ public class Borrowing {
 	}
 	
 	/**
-	 * 获取productId
+	 * 获取guarantors
 	 * 
 	 * @return
 	 */
-	public String getProductId() {
-		return productId;
+	public String getGuarantors() {
+		return guarantors;
 	}
 
 	/**
-	 * 设置productId
+	 * 设置guarantors
 	 * 
-	 * @param productId
+	 * @param guarantors
 	 */
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setGuarantors(String guarantors) {
+		this.guarantors = guarantors;
+	}
+	
+	/**
+	 * 获取credit
+	 * 
+	 * @return
+	 */
+	public String getCredit() {
+		return credit;
+	}
+
+	/**
+	 * 设置credit
+	 * 
+	 * @param credit
+	 */
+	public void setCredit(String credit) {
+		this.credit = credit;
+	}
+	
+	/**
+	 * 获取reta
+	 * 
+	 * @return
+	 */
+	public String getReta() {
+		return reta;
+	}
+
+	/**
+	 * 设置reta
+	 * 
+	 * @param reta
+	 */
+	public void setReta(String reta) {
+		this.reta = reta;
+	}
+	
+	/**
+	 * 获取deadTime
+	 * 
+	 * @return
+	 */
+	public String getDeadTime() {
+		return deadTime;
+	}
+
+	/**
+	 * 设置deadTime
+	 * 
+	 * @param deadTime
+	 */
+	public void setDeadTime(String deadTime) {
+		this.deadTime = deadTime;
+	}
+	
+	/**
+	 * 获取rmoneytype
+	 * 
+	 * @return
+	 */
+	public String getRmoneytype() {
+		return rmoneytype;
+	}
+
+	/**
+	 * 设置rmoneytype
+	 * 
+	 * @param rmoneytype
+	 */
+	public void setRmoneytype(String rmoneytype) {
+		this.rmoneytype = rmoneytype;
+	}
+	
+	/**
+	 * 获取product
+	 * 
+	 * @return
+	 */
+	public String getProduct() {
+		return product;
+	}
+
+	/**
+	 * 设置product
+	 * 
+	 * @param product
+	 */
+	public void setProduct(String product) {
+		this.product = product;
 	}
 
 	@Override
 	public String toString() {
-		return "Borrowing [iD=" + iD + " , name=" + name + " , money=" + money + " , deadline=" + deadline + " , startDate=" + startDate + " , phoneNumber=" + phoneNumber + " , guaranteeType=" + guaranteeType + " , amountGuarantee=" + amountGuarantee + " , purpose=" + purpose + " , describ=" + describ + " , conditio=" + conditio + " , state=" + state + " , productId=" + productId + "  ]";
+		return "Borrowing [iD=" + iD + " , nameId=" + nameId + " , money=" + money + " , beginTime=" + beginTime + " , end=" + end + " , phoneNumber=" + phoneNumber + " , guarantee=" + guarantee + " , amountGuarantee=" + amountGuarantee + " , purpose=" + purpose + " , describ=" + describ + " , conditio=" + conditio + " , state=" + state + " , guarantors=" + guarantors + " , credit=" + credit + " , reta=" + reta + " , deadTime=" + deadTime + " , rmoneytype=" + rmoneytype + " , product=" + product + "  ]";
 	
 	}
 	

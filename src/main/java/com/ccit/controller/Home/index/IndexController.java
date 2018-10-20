@@ -15,7 +15,7 @@ public class IndexController {
 
     @RequestMapping("index")
     public ModelAndView gotUser() {
-        ModelAndView mav = new    ModelAndView();
+        ModelAndView mav = new ModelAndView();
         String indexpage = index.findOne("1");
         String jsStr = JSONObject.parseObject(indexpage).getString("data");
         JSONObject IndexpageData = JSONObject.parseObject(jsStr);

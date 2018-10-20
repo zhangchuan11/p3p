@@ -9,12 +9,12 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class Capital {
-	/**标识*/
+	/***/
 	private String iD; 
-	/**余额*/
-	private Double balance; 
-	/**冻结余额*/
-	private Double blockedBalances; 
+	/***/
+	private String balance; 
+	/***/
+	private String blockedBalances; 
 	/**
 	 * 实例化
 	 */
@@ -31,11 +31,11 @@ public class Capital {
 		if (obj.get("iD") instanceof String) {
 			this.setID((String) obj.get("iD"));
 		}
-		if (obj.get("balance") instanceof Number) {
-			this.setBalance(((Number) obj.get("balance")).doubleValue());
+		if (obj.get("balance") instanceof String) {
+			this.setBalance((String) obj.get("balance"));
 		}
-		if (obj.get("blockedBalances") instanceof Number) {
-			this.setBlockedBalances(((Number) obj.get("blockedBalances")).doubleValue());
+		if (obj.get("blockedBalances") instanceof String) {
+			this.setBlockedBalances((String) obj.get("blockedBalances"));
 		}
 	}
 	
@@ -82,7 +82,7 @@ public class Capital {
 	 * 
 	 * @return
 	 */
-	public Double getBalance() {
+	public String getBalance() {
 		return balance;
 	}
 
@@ -91,7 +91,7 @@ public class Capital {
 	 * 
 	 * @param balance
 	 */
-	public void setBalance(Double balance) {
+	public void setBalance(String balance) {
 		this.balance = balance;
 	}
 	
@@ -100,7 +100,7 @@ public class Capital {
 	 * 
 	 * @return
 	 */
-	public Double getBlockedBalances() {
+	public String getBlockedBalances() {
 		return blockedBalances;
 	}
 
@@ -109,7 +109,7 @@ public class Capital {
 	 * 
 	 * @param blockedBalances
 	 */
-	public void setBlockedBalances(Double blockedBalances) {
+	public void setBlockedBalances(String blockedBalances) {
 		this.blockedBalances = blockedBalances;
 	}
 

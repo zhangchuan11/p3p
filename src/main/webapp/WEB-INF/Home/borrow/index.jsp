@@ -15,7 +15,14 @@
                 <a href=" "><img src="./lib/img/zxcf_qq.png" alt=""></a>
             </div>
             <div class="zxcf_top_r fr">
-                <a href=" " class="curspan">立即登录</a>
+                <c:choose>
+                    <c:when test="${user !=null}">
+                        <a href="exit" class="curspan">切换账户</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="login" class="curspan">立即登录</a>
+                    </c:otherwise>
+                </c:choose>
                 <span>|</span>
                 <a href="http://demo1.mycodes.net/moban/P2P_wangdailicai/register.html">免费注册</a>
                 <span>|</span>
@@ -101,17 +108,20 @@
                         </div>
                         <!-- end l -->
                         <div class="bor_det_oner fl">
-                            <form id="ff" class="easyui-form" method="post"  data-options="novalidate:true">
+                            <form id="ff" class="easyui-form" method="post"  data-options="novalidate:true" enctype="multipart/form-data">
                                 <table cellpadding="5" style="border-collapse:separate; border-spacing:0px 20px;">
+                                    <input type="hidden" value="${user["id"]}" name="nameId"></input>
+                                    <input type="hidden" value="0" name="state"></input>
+                                    <input type="hidden" value="1" name="product"></input>
                                     <tr>
-                                        <td>借款金额:</td>
-                                        <td><input class="easyui-textbox" type="text" name="Money"
+                                        <td>借款金额: </td>
+                                        <td><input id="money" class="easyui-numberbox"  name="money" validType="selectMax['#money']"
                                                    data-options="required:true"></input></td>
                                     </tr>
                                     <tr>
                                         <td>借款期限:</td>
                                         <td>
-                                            <select class="easyui-combobox" name="language" id="language" validType="selectValueRequired['#language']" data-options="required:true" editable="false">
+                                            <select id="deadTime"name="deadTime" class="easyui-combobox"   validType="selectValueRequired['#deadTime']" data-options="required:true" editable="false">
                                                 <option value="">请选择</option>
                                                 <option value="1个月">1个月</option>
                                                 <option value="2个月">2个月</option>
@@ -130,22 +140,22 @@
                                     </tr>
                                     <tr>
                                         <td>手机号码:</td>
-                                        <td><input class="easyui-textbox" type="text" name="PhoneNumber"
+                                        <td><input id="phoneNumber" class="easyui-numberbox"  name="phoneNumber" validType="length['#phoneNumber']"
                                                    data-options="required:true"></input></td>
                                     </tr>
-                                    <%--<tr>--%>
-                                    <%--<td>房产证明:</td>--%>
-                                    <%--<td><input class="easyui-filebox" name="file1" data-options="required:true" style="width:100%"></td>--%>
-                                <%--</tr>--%>
+                                    <tr>
+                                    <td>房产证明:</td>
+                                    <td><input class="easyui-filebox" name="file" data-options="required:true" style="width:100%" buttonText="选择图片"></td>
+                                </tr>
                                     <tr>
                                         <td>总价值:</td>
-                                        <td><input class="easyui-textbox" type="text" name="AmountGuarantee"
+                                        <td><input id="amountGuarantee" class="easyui-numberbox"  name="amountGuarantee"
                                                    data-options="required:true"></input></td>
                                     </tr>
                                     <tr>
                                         <td>借款用途:</td>
                                         <td>
-                                            <select id="Purpose" name="Purpose" class="easyui-combobox" validType="selectValueRequired['#Purpose']" data-options="required:true" editable="false" >
+                                            <select id="purpose" name="purpose" class="easyui-combobox" validType="selectValueRequired['#purpose']" data-options="required:true" editable="false" >
                                                 <option value="">请选择</option>
                                                 <option value="个人消费">个人消费</option>
                                                 <option value="生产经营">生产经营</option>
@@ -158,13 +168,13 @@
                                     </tr>
                                     <tr>
                                         <td>借款描述:</td>
-                                        <td><input class="easyui-textbox" name="Describ" data-options="multiline:true"
+                                        <td><input class="easyui-textbox" name="describ" data-options="multiline:true" id="describ"
                                                    style="height:110px;width: 300px"></input></td>
                                     </tr>
                                     <tr>
                                         <td>借款情况:</td>
                                         <td>
-                                            <select  id="Conditio" name="Conditio" class="easyui-combobox" data-options="required:true"validType="selectValueRequired['#Conditio']" editable="false">
+                                            <select  id="conditio" name="conditio" class="easyui-combobox" data-options="required:true"validType="selectValueRequired['#conditio']" editable="false">
                                                 <option value="">请选择</option>
                                                 <option value="普通借款">普通借款</option>
                                                 <option value="紧急借款">紧急借款</option>

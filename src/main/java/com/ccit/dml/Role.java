@@ -9,13 +9,13 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class Role {
-	/**标识*/
+	/***/
 	private String id; 
-	/**角色*/
+	/***/
 	private String roleId; 
-	/**权限id*/
+	/**Ȩ*/
 	private String permissionsID; 
-	/**权限控制器*/
+	/**Ȩ*/
 	private String permissionsController; 
 	/**
 	 * 实例化

@@ -9,17 +9,17 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class Permissions {
-	/**标识*/
+	/***/
 	private String iD; 
-	/**权限名称*/
+	/**Ȩ*/
 	private String authName; 
-	/**初始状态*/
+	/***/
 	private String state; 
-	/**图标*/
+	/**ͼ*/
 	private String iconCls; 
-	/**父ID*/
+	/***/
 	private String pid; 
-	/**控制器*/
+	/***/
 	private String controller; 
 	/**
 	 * 实例化

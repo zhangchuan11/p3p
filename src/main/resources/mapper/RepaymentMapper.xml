@@ -4,14 +4,11 @@
 	<!-- Repayment的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
 	<resultMap id="result_Repayment_Map" type="com.ccit.dml.Repayment">
 		<id column="id" property="id" />
-		<result column="R_name" property="rName" />
-		<result column="R_money" property="rMoney" />
-		<result column="R_Allmoney" property="rAllmoney" />
-		<result column="R_ResidueMoney" property="rResiduemoney" />
-		<result column="R_time" property="rTime" />
-		<result column="R_way" property="rWay" />
-		<result column="R_State" property="rState" />
-		<result column="R_Product_id" property="rProductId" />
+		<result column="Rname" property="rname" />
+		<result column="Rmoney" property="rmoney" />
+		<result column="RState" property="rState" />
+		<result column="Rtime" property="rtime" />
+		<result column="Bid" property="bid" />
 	</resultMap>
 
 	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
@@ -52,7 +49,7 @@
 
 	<!-- 数据库中表名为:repayment的列名 -->
 	<sql id="repayment_Column">
-		id,R_name,R_money,R_Allmoney,R_ResidueMoney,R_time,R_way,R_State,R_Product_id
+		id,Rname,Rmoney,RState,Rtime,Bid
 	</sql>
 
 	<!--获得类名为:Repayment对应的数据库表的数据总行数 -->
@@ -97,14 +94,11 @@
 		<include refid="repayment_Column" />
 		from repayment
 		<where>
-		<if test="rName != null"> and R_name = #{rName}</if>
-		<if test="rMoney != null"> and R_money = #{rMoney}</if>
-		<if test="rAllmoney != null"> and R_Allmoney = #{rAllmoney}</if>
-		<if test="rResiduemoney != null"> and R_ResidueMoney = #{rResiduemoney}</if>
-		<if test="rTime != null"> and R_time = #{rTime}</if>
-		<if test="rWay != null"> and R_way = #{rWay}</if>
-		<if test="rState != null"> and R_State = #{rState}</if>
-		<if test="rProductId != null"> and R_Product_id = #{rProductId}</if>
+		<if test="rname != null"> and Rname = #{rname}</if>
+		<if test="rmoney != null"> and Rmoney = #{rmoney}</if>
+		<if test="rState != null"> and RState = #{rState}</if>
+		<if test="rtime != null"> and Rtime = #{rtime}</if>
+		<if test="bid != null"> and Bid = #{bid}</if>
 		<if test="id != null"> and id = #{id} </if>
 		</where>
 		LIMIT 1
@@ -116,14 +110,11 @@
 		<include refid="repayment_Column" />
 		from repayment
 		<where>
-		<if test="rName != null"> and R_name = #{rName}</if>
-		<if test="rMoney != null"> and R_money = #{rMoney}</if>
-		<if test="rAllmoney != null"> and R_Allmoney = #{rAllmoney}</if>
-		<if test="rResiduemoney != null"> and R_ResidueMoney = #{rResiduemoney}</if>
-		<if test="rTime != null"> and R_time = #{rTime}</if>
-		<if test="rWay != null"> and R_way = #{rWay}</if>
-		<if test="rState != null"> and R_State = #{rState}</if>
-		<if test="rProductId != null"> and R_Product_id = #{rProductId}</if>
+		<if test="rname != null"> and Rname = #{rname}</if>
+		<if test="rmoney != null"> and Rmoney = #{rmoney}</if>
+		<if test="rState != null"> and RState = #{rState}</if>
+		<if test="rtime != null"> and Rtime = #{rtime}</if>
+		<if test="bid != null"> and Bid = #{bid}</if>
 		<if test="id != null"> and id = #{id} </if>
 		</where>
 	</select>
@@ -131,8 +122,8 @@
 	<!-- 将Repayment插入到对应数据库的表中,包括属性值为null的数据 -->
 	<insert id="insertRepayment" parameterType="com.ccit.dml.Repayment">
 		insert into 
-		repayment (id,R_name,R_money,R_Allmoney,R_ResidueMoney,R_time,R_way,R_State,R_Product_id) 
-		values(#{id},#{rName},#{rMoney},#{rAllmoney},#{rResiduemoney},#{rTime},#{rWay},#{rState},#{rProductId})
+		repayment (id,Rname,Rmoney,RState,Rtime,Bid) 
+		values(#{id},#{rname},#{rmoney},#{rState},#{rtime},#{bid})
 	</insert>
 
 	<!-- 将Repayment中属性值不为null的数据,插入到对应数据库的表中 -->
@@ -140,34 +131,28 @@
 		insert into repayment
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">id,</if>
-			<if test="rName != null">R_name,</if>
-			<if test="rMoney != null">R_money,</if>
-			<if test="rAllmoney != null">R_Allmoney,</if>
-			<if test="rResiduemoney != null">R_ResidueMoney,</if>
-			<if test="rTime != null">R_time,</if>
-			<if test="rWay != null">R_way,</if>
-			<if test="rState != null">R_State,</if>
-			<if test="rProductId != null">R_Product_id,</if>
+			<if test="rname != null">Rname,</if>
+			<if test="rmoney != null">Rmoney,</if>
+			<if test="rState != null">RState,</if>
+			<if test="rtime != null">Rtime,</if>
+			<if test="bid != null">Bid,</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null">#{id},</if>
-			<if test="rName != null">#{rName},</if>
-			<if test="rMoney != null">#{rMoney},</if>
-			<if test="rAllmoney != null">#{rAllmoney},</if>
-			<if test="rResiduemoney != null">#{rResiduemoney},</if>
-			<if test="rTime != null">#{rTime},</if>
-			<if test="rWay != null">#{rWay},</if>
+			<if test="rname != null">#{rname},</if>
+			<if test="rmoney != null">#{rmoney},</if>
 			<if test="rState != null">#{rState},</if>
-			<if test="rProductId != null">#{rProductId},</if>
+			<if test="rtime != null">#{rtime},</if>
+			<if test="bid != null">#{bid},</if>
 		</trim>
 	</insert>
 
 	<!-- 将Repayment批量插入到对应数据库的表中 -->
 	<insert id="insertRepaymentByBatch" parameterType="ArrayList">
-		insert into repayment(id,R_name,R_money,R_Allmoney,R_ResidueMoney,R_time,R_way,R_State,R_Product_id) values
+		insert into repayment(id,Rname,Rmoney,RState,Rtime,Bid) values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{id},#{rName},#{rMoney},#{rAllmoney},#{rResiduemoney},#{rTime},#{rWay},#{rState},#{rProductId})
+			(#{id},#{rname},#{rmoney},#{rState},#{rtime},#{bid})
 		</foreach>
 	</insert>
 	
@@ -189,14 +174,11 @@
 	<update id="updateRepaymentById" parameterType="com.ccit.dml.Repayment"> 
 		update repayment set
 		<set>
-			R_name = #{rName} , 
-			R_money = #{rMoney} , 
-			R_Allmoney = #{rAllmoney} , 
-			R_ResidueMoney = #{rResiduemoney} , 
-			R_time = #{rTime} , 
-			R_way = #{rWay} , 
-			R_State = #{rState} , 
-			R_Product_id = #{rProductId} , 
+			Rname = #{rname} , 
+			Rmoney = #{rmoney} , 
+			RState = #{rState} , 
+			Rtime = #{rtime} , 
+			Bid = #{bid} , 
 		</set>
 		where id = #{id}
 	</update>
@@ -205,14 +187,11 @@
 	<update id="updateNotNullRepaymentById" parameterType="com.ccit.dml.Repayment">
 		update repayment
 		<set>
-					<if test="rName != null">R_name = #{rName},</if>
-					<if test="rMoney != null">R_money = #{rMoney},</if>
-					<if test="rAllmoney != null">R_Allmoney = #{rAllmoney},</if>
-					<if test="rResiduemoney != null">R_ResidueMoney = #{rResiduemoney},</if>
-					<if test="rTime != null">R_time = #{rTime},</if>
-					<if test="rWay != null">R_way = #{rWay},</if>
-					<if test="rState != null">R_State = #{rState},</if>
-					<if test="rProductId != null">R_Product_id = #{rProductId},</if>
+					<if test="rname != null">Rname = #{rname},</if>
+					<if test="rmoney != null">Rmoney = #{rmoney},</if>
+					<if test="rState != null">RState = #{rState},</if>
+					<if test="rtime != null">Rtime = #{rtime},</if>
+					<if test="bid != null">Bid = #{bid},</if>
 		</set>
 		where id = #{id}
 	</update>
@@ -222,14 +201,11 @@
 		update repayment
 		<set>
 			id = #{enti.id},
-			R_name = #{enti.rName},
-			R_money = #{enti.rMoney},
-			R_Allmoney = #{enti.rAllmoney},
-			R_ResidueMoney = #{enti.rResiduemoney},
-			R_time = #{enti.rTime},
-			R_way = #{enti.rWay},
-			R_State = #{enti.rState},
-			R_Product_id = #{enti.rProductId},
+			Rname = #{enti.rname},
+			Rmoney = #{enti.rmoney},
+			RState = #{enti.rState},
+			Rtime = #{enti.rtime},
+			Bid = #{enti.bid},
 		</set>
 		<if test="assist.require!=null">
 			<include refid="updateAssist" />
@@ -241,14 +217,11 @@
 		update repayment
 		<set>
 			<if test="enti.id != null">id = #{enti.id},</if>
-			<if test="enti.rName != null">R_name = #{enti.rName},</if>
-			<if test="enti.rMoney != null">R_money = #{enti.rMoney},</if>
-			<if test="enti.rAllmoney != null">R_Allmoney = #{enti.rAllmoney},</if>
-			<if test="enti.rResiduemoney != null">R_ResidueMoney = #{enti.rResiduemoney},</if>
-			<if test="enti.rTime != null">R_time = #{enti.rTime},</if>
-			<if test="enti.rWay != null">R_way = #{enti.rWay},</if>
-			<if test="enti.rState != null">R_State = #{enti.rState},</if>
-			<if test="enti.rProductId != null">R_Product_id = #{enti.rProductId},</if>
+			<if test="enti.rname != null">Rname = #{enti.rname},</if>
+			<if test="enti.rmoney != null">Rmoney = #{enti.rmoney},</if>
+			<if test="enti.rState != null">RState = #{enti.rState},</if>
+			<if test="enti.rtime != null">Rtime = #{enti.rtime},</if>
+			<if test="enti.bid != null">Bid = #{enti.bid},</if>
 		</set>
 		<if test="assist.require!=null">
 			<include refid="updateAssist" />

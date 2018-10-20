@@ -33,16 +33,14 @@ public class CreditgradeServiceImpl implements CreditgradeService {
 		return result.toJSONString();
 	}
 
-	@Override
-	public String find(Creditgrade value) {
-		//TODO这里可以做通过Assist做添加查询
-		List<Creditgrade> result = creditgradeDao.selectCreditgrade(null);
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("执行获取Creditgrade数据集-->结果:", result);
-		}
-		return resultFormat(C200, result);
-	}
-	@Override
+    @Override
+    public String find(Creditgrade value) {
+        return null;
+    }
+
+
+
+    @Override
 	public String findOne(String id) {
 		if (id == null) {
 			if (LOG.isDebugEnabled()) {

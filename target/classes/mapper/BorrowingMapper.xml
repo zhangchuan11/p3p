@@ -4,18 +4,23 @@
 	<!-- Borrowing的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
 	<resultMap id="result_Borrowing_Map" type="com.ccit.dml.Borrowing">
 		<id column="ID" property="iD" />
-		<result column="name" property="name" />
+		<result column="NameId" property="nameId" />
 		<result column="Money" property="money" />
-		<result column="Deadline" property="deadline" />
-		<result column="StartDate" property="startDate" />
+		<result column="BeginTime" property="beginTime" />
+		<result column="End" property="end" />
 		<result column="PhoneNumber" property="phoneNumber" />
-		<result column="GuaranteeType" property="guaranteeType" />
+		<result column="Guarantee" property="guarantee" />
 		<result column="AmountGuarantee" property="amountGuarantee" />
 		<result column="Purpose" property="purpose" />
 		<result column="Describ" property="describ" />
 		<result column="Conditio" property="conditio" />
 		<result column="State" property="state" />
-		<result column="Product_id" property="productId" />
+		<result column="Guarantors" property="guarantors" />
+		<result column="Credit" property="credit" />
+		<result column="Reta" property="reta" />
+		<result column="DeadTime" property="deadTime" />
+		<result column="Rmoneytype" property="rmoneytype" />
+		<result column="Product" property="product" />
 	</resultMap>
 
 	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
@@ -56,7 +61,7 @@
 
 	<!-- 数据库中表名为:borrowing的列名 -->
 	<sql id="borrowing_Column">
-		ID,name,Money,Deadline,StartDate,PhoneNumber,GuaranteeType,AmountGuarantee,Purpose,Describ,Conditio,State,Product_id
+		ID,NameId,Money,BeginTime,End,PhoneNumber,Guarantee,AmountGuarantee,Purpose,Describ,Conditio,State,Guarantors,Credit,Reta,DeadTime,Rmoneytype,Product
 	</sql>
 
 	<!--获得类名为:Borrowing对应的数据库表的数据总行数 -->
@@ -101,18 +106,23 @@
 		<include refid="borrowing_Column" />
 		from borrowing
 		<where>
-		<if test="name != null"> and name = #{name}</if>
+		<if test="nameId != null"> and NameId = #{nameId}</if>
 		<if test="money != null"> and Money = #{money}</if>
-		<if test="deadline != null"> and Deadline = #{deadline}</if>
-		<if test="startDate != null"> and StartDate = #{startDate}</if>
+		<if test="beginTime != null"> and BeginTime = #{beginTime}</if>
+		<if test="end != null"> and End = #{end}</if>
 		<if test="phoneNumber != null"> and PhoneNumber = #{phoneNumber}</if>
-		<if test="guaranteeType != null"> and GuaranteeType = #{guaranteeType}</if>
+		<if test="guarantee != null"> and Guarantee = #{guarantee}</if>
 		<if test="amountGuarantee != null"> and AmountGuarantee = #{amountGuarantee}</if>
 		<if test="purpose != null"> and Purpose = #{purpose}</if>
 		<if test="describ != null"> and Describ = #{describ}</if>
 		<if test="conditio != null"> and Conditio = #{conditio}</if>
 		<if test="state != null"> and State = #{state}</if>
-		<if test="productId != null"> and Product_id = #{productId}</if>
+		<if test="guarantors != null"> and Guarantors = #{guarantors}</if>
+		<if test="credit != null"> and Credit = #{credit}</if>
+		<if test="reta != null"> and Reta = #{reta}</if>
+		<if test="deadTime != null"> and DeadTime = #{deadTime}</if>
+		<if test="rmoneytype != null"> and Rmoneytype = #{rmoneytype}</if>
+		<if test="product != null"> and Product = #{product}</if>
 		<if test="iD != null"> and ID = #{iD} </if>
 		</where>
 		LIMIT 1
@@ -124,18 +134,23 @@
 		<include refid="borrowing_Column" />
 		from borrowing
 		<where>
-		<if test="name != null"> and name = #{name}</if>
+		<if test="nameId != null"> and NameId = #{nameId}</if>
 		<if test="money != null"> and Money = #{money}</if>
-		<if test="deadline != null"> and Deadline = #{deadline}</if>
-		<if test="startDate != null"> and StartDate = #{startDate}</if>
+		<if test="beginTime != null"> and BeginTime = #{beginTime}</if>
+		<if test="end != null"> and End = #{end}</if>
 		<if test="phoneNumber != null"> and PhoneNumber = #{phoneNumber}</if>
-		<if test="guaranteeType != null"> and GuaranteeType = #{guaranteeType}</if>
+		<if test="guarantee != null"> and Guarantee = #{guarantee}</if>
 		<if test="amountGuarantee != null"> and AmountGuarantee = #{amountGuarantee}</if>
 		<if test="purpose != null"> and Purpose = #{purpose}</if>
 		<if test="describ != null"> and Describ = #{describ}</if>
 		<if test="conditio != null"> and Conditio = #{conditio}</if>
 		<if test="state != null"> and State = #{state}</if>
-		<if test="productId != null"> and Product_id = #{productId}</if>
+		<if test="guarantors != null"> and Guarantors = #{guarantors}</if>
+		<if test="credit != null"> and Credit = #{credit}</if>
+		<if test="reta != null"> and Reta = #{reta}</if>
+		<if test="deadTime != null"> and DeadTime = #{deadTime}</if>
+		<if test="rmoneytype != null"> and Rmoneytype = #{rmoneytype}</if>
+		<if test="product != null"> and Product = #{product}</if>
 		<if test="iD != null"> and ID = #{iD} </if>
 		</where>
 	</select>
@@ -143,8 +158,8 @@
 	<!-- 将Borrowing插入到对应数据库的表中,包括属性值为null的数据 -->
 	<insert id="insertBorrowing" parameterType="com.ccit.dml.Borrowing">
 		insert into 
-		borrowing (ID,name,Money,Deadline,StartDate,PhoneNumber,GuaranteeType,AmountGuarantee,Purpose,Describ,Conditio,State,Product_id) 
-		values(#{iD},#{name},#{money},#{deadline},#{startDate},#{phoneNumber},#{guaranteeType},#{amountGuarantee},#{purpose},#{describ},#{conditio},#{state},#{productId})
+		borrowing (ID,NameId,Money,BeginTime,End,PhoneNumber,Guarantee,AmountGuarantee,Purpose,Describ,Conditio,State,Guarantors,Credit,Reta,DeadTime,Rmoneytype,Product) 
+		values(#{iD},#{nameId},#{money},#{beginTime},#{end},#{phoneNumber},#{guarantee},#{amountGuarantee},#{purpose},#{describ},#{conditio},#{state},#{guarantors},#{credit},#{reta},#{deadTime},#{rmoneytype},#{product})
 	</insert>
 
 	<!-- 将Borrowing中属性值不为null的数据,插入到对应数据库的表中 -->
@@ -152,42 +167,52 @@
 		insert into borrowing
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="iD != null">ID,</if>
-			<if test="name != null">name,</if>
+			<if test="nameId != null">NameId,</if>
 			<if test="money != null">Money,</if>
-			<if test="deadline != null">Deadline,</if>
-			<if test="startDate != null">StartDate,</if>
+			<if test="beginTime != null">BeginTime,</if>
+			<if test="end != null">End,</if>
 			<if test="phoneNumber != null">PhoneNumber,</if>
-			<if test="guaranteeType != null">GuaranteeType,</if>
+			<if test="guarantee != null">Guarantee,</if>
 			<if test="amountGuarantee != null">AmountGuarantee,</if>
 			<if test="purpose != null">Purpose,</if>
 			<if test="describ != null">Describ,</if>
 			<if test="conditio != null">Conditio,</if>
 			<if test="state != null">State,</if>
-			<if test="productId != null">Product_id,</if>
+			<if test="guarantors != null">Guarantors,</if>
+			<if test="credit != null">Credit,</if>
+			<if test="reta != null">Reta,</if>
+			<if test="deadTime != null">DeadTime,</if>
+			<if test="rmoneytype != null">Rmoneytype,</if>
+			<if test="product != null">Product,</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="iD != null">#{iD},</if>
-			<if test="name != null">#{name},</if>
+			<if test="nameId != null">#{nameId},</if>
 			<if test="money != null">#{money},</if>
-			<if test="deadline != null">#{deadline},</if>
-			<if test="startDate != null">#{startDate},</if>
+			<if test="beginTime != null">#{beginTime},</if>
+			<if test="end != null">#{end},</if>
 			<if test="phoneNumber != null">#{phoneNumber},</if>
-			<if test="guaranteeType != null">#{guaranteeType},</if>
+			<if test="guarantee != null">#{guarantee},</if>
 			<if test="amountGuarantee != null">#{amountGuarantee},</if>
 			<if test="purpose != null">#{purpose},</if>
 			<if test="describ != null">#{describ},</if>
 			<if test="conditio != null">#{conditio},</if>
 			<if test="state != null">#{state},</if>
-			<if test="productId != null">#{productId},</if>
+			<if test="guarantors != null">#{guarantors},</if>
+			<if test="credit != null">#{credit},</if>
+			<if test="reta != null">#{reta},</if>
+			<if test="deadTime != null">#{deadTime},</if>
+			<if test="rmoneytype != null">#{rmoneytype},</if>
+			<if test="product != null">#{product},</if>
 		</trim>
 	</insert>
 
 	<!-- 将Borrowing批量插入到对应数据库的表中 -->
 	<insert id="insertBorrowingByBatch" parameterType="ArrayList">
-		insert into borrowing(ID,name,Money,Deadline,StartDate,PhoneNumber,GuaranteeType,AmountGuarantee,Purpose,Describ,Conditio,State,Product_id) values
+		insert into borrowing(ID,NameId,Money,BeginTime,End,PhoneNumber,Guarantee,AmountGuarantee,Purpose,Describ,Conditio,State,Guarantors,Credit,Reta,DeadTime,Rmoneytype,Product) values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{iD},#{name},#{money},#{deadline},#{startDate},#{phoneNumber},#{guaranteeType},#{amountGuarantee},#{purpose},#{describ},#{conditio},#{state},#{productId})
+			(#{iD},#{nameId},#{money},#{beginTime},#{end},#{phoneNumber},#{guarantee},#{amountGuarantee},#{purpose},#{describ},#{conditio},#{state},#{guarantors},#{credit},#{reta},#{deadTime},#{rmoneytype},#{product})
 		</foreach>
 	</insert>
 	
@@ -209,18 +234,23 @@
 	<update id="updateBorrowingById" parameterType="com.ccit.dml.Borrowing"> 
 		update borrowing set
 		<set>
-			name = #{name} , 
+			NameId = #{nameId} , 
 			Money = #{money} , 
-			Deadline = #{deadline} , 
-			StartDate = #{startDate} , 
+			BeginTime = #{beginTime} , 
+			End = #{end} , 
 			PhoneNumber = #{phoneNumber} , 
-			GuaranteeType = #{guaranteeType} , 
+			Guarantee = #{guarantee} , 
 			AmountGuarantee = #{amountGuarantee} , 
 			Purpose = #{purpose} , 
 			Describ = #{describ} , 
 			Conditio = #{conditio} , 
 			State = #{state} , 
-			Product_id = #{productId} , 
+			Guarantors = #{guarantors} , 
+			Credit = #{credit} , 
+			Reta = #{reta} , 
+			DeadTime = #{deadTime} , 
+			Rmoneytype = #{rmoneytype} , 
+			Product = #{product} , 
 		</set>
 		where ID = #{iD}
 	</update>
@@ -229,18 +259,23 @@
 	<update id="updateNotNullBorrowingById" parameterType="com.ccit.dml.Borrowing">
 		update borrowing
 		<set>
-					<if test="name != null">name = #{name},</if>
+					<if test="nameId != null">NameId = #{nameId},</if>
 					<if test="money != null">Money = #{money},</if>
-					<if test="deadline != null">Deadline = #{deadline},</if>
-					<if test="startDate != null">StartDate = #{startDate},</if>
+					<if test="beginTime != null">BeginTime = #{beginTime},</if>
+					<if test="end != null">End = #{end},</if>
 					<if test="phoneNumber != null">PhoneNumber = #{phoneNumber},</if>
-					<if test="guaranteeType != null">GuaranteeType = #{guaranteeType},</if>
+					<if test="guarantee != null">Guarantee = #{guarantee},</if>
 					<if test="amountGuarantee != null">AmountGuarantee = #{amountGuarantee},</if>
 					<if test="purpose != null">Purpose = #{purpose},</if>
 					<if test="describ != null">Describ = #{describ},</if>
 					<if test="conditio != null">Conditio = #{conditio},</if>
 					<if test="state != null">State = #{state},</if>
-					<if test="productId != null">Product_id = #{productId},</if>
+					<if test="guarantors != null">Guarantors = #{guarantors},</if>
+					<if test="credit != null">Credit = #{credit},</if>
+					<if test="reta != null">Reta = #{reta},</if>
+					<if test="deadTime != null">DeadTime = #{deadTime},</if>
+					<if test="rmoneytype != null">Rmoneytype = #{rmoneytype},</if>
+					<if test="product != null">Product = #{product},</if>
 		</set>
 		where ID = #{iD}
 	</update>
@@ -250,18 +285,23 @@
 		update borrowing
 		<set>
 			ID = #{enti.iD},
-			name = #{enti.name},
+			NameId = #{enti.nameId},
 			Money = #{enti.money},
-			Deadline = #{enti.deadline},
-			StartDate = #{enti.startDate},
+			BeginTime = #{enti.beginTime},
+			End = #{enti.end},
 			PhoneNumber = #{enti.phoneNumber},
-			GuaranteeType = #{enti.guaranteeType},
+			Guarantee = #{enti.guarantee},
 			AmountGuarantee = #{enti.amountGuarantee},
 			Purpose = #{enti.purpose},
 			Describ = #{enti.describ},
 			Conditio = #{enti.conditio},
 			State = #{enti.state},
-			Product_id = #{enti.productId},
+			Guarantors = #{enti.guarantors},
+			Credit = #{enti.credit},
+			Reta = #{enti.reta},
+			DeadTime = #{enti.deadTime},
+			Rmoneytype = #{enti.rmoneytype},
+			Product = #{enti.product},
 		</set>
 		<if test="assist.require!=null">
 			<include refid="updateAssist" />
@@ -273,18 +313,23 @@
 		update borrowing
 		<set>
 			<if test="enti.iD != null">ID = #{enti.iD},</if>
-			<if test="enti.name != null">name = #{enti.name},</if>
+			<if test="enti.nameId != null">NameId = #{enti.nameId},</if>
 			<if test="enti.money != null">Money = #{enti.money},</if>
-			<if test="enti.deadline != null">Deadline = #{enti.deadline},</if>
-			<if test="enti.startDate != null">StartDate = #{enti.startDate},</if>
+			<if test="enti.beginTime != null">BeginTime = #{enti.beginTime},</if>
+			<if test="enti.end != null">End = #{enti.end},</if>
 			<if test="enti.phoneNumber != null">PhoneNumber = #{enti.phoneNumber},</if>
-			<if test="enti.guaranteeType != null">GuaranteeType = #{enti.guaranteeType},</if>
+			<if test="enti.guarantee != null">Guarantee = #{enti.guarantee},</if>
 			<if test="enti.amountGuarantee != null">AmountGuarantee = #{enti.amountGuarantee},</if>
 			<if test="enti.purpose != null">Purpose = #{enti.purpose},</if>
 			<if test="enti.describ != null">Describ = #{enti.describ},</if>
 			<if test="enti.conditio != null">Conditio = #{enti.conditio},</if>
 			<if test="enti.state != null">State = #{enti.state},</if>
-			<if test="enti.productId != null">Product_id = #{enti.productId},</if>
+			<if test="enti.guarantors != null">Guarantors = #{enti.guarantors},</if>
+			<if test="enti.credit != null">Credit = #{enti.credit},</if>
+			<if test="enti.reta != null">Reta = #{enti.reta},</if>
+			<if test="enti.deadTime != null">DeadTime = #{enti.deadTime},</if>
+			<if test="enti.rmoneytype != null">Rmoneytype = #{enti.rmoneytype},</if>
+			<if test="enti.product != null">Product = #{enti.product},</if>
 		</set>
 		<if test="assist.require!=null">
 			<include refid="updateAssist" />

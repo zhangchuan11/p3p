@@ -1,12 +1,10 @@
 package com.ccit.dao;
-
-import com.ccit.dml.Indexpage;
-import com.common.Assist;
-
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
+import com.common.Assist;
+import com.ccit.dml.Indexpage;
+
+import org.apache.ibatis.annotations.Param;
 /**
  * Indexpage的Dao接口
  * 

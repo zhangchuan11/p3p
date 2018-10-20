@@ -1,5 +1,5 @@
 /**
- *     打开角色编辑窗口
+ *     打开注册窗口
  */
 function openaddrole() {
     $('#user-add-form').form('clear');
@@ -114,3 +114,27 @@ function doSaveRole(){
         }
     });
 }
+// $('#mpanel5').pointsVerify({
+//     defaultNum : 4,	//默认的文字数量
+//     checkNum : 2,	//校对的文字数量
+//     vSpace : 5,	//间隔
+//     imgName : ['1.jpg', '2.jpg'],
+//     imgSize : {
+//         width: '600px',
+//         height: '200px',
+//     },
+//     barSize : {
+//         width : '600px',
+//         height : '40px',
+//     },
+//     ready : function() {
+//     },
+//     success : function() {
+//         alert('验证成功，添加你自己的代码！');
+//         //......后续操作
+//     },
+//     error : function() {
+// 		        	alert('验证失败！');
+//     }
+//
+// });

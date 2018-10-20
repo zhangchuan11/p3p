@@ -9,15 +9,15 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class Indexpage {
-	/**标识*/
+	/***/
 	private String iD; 
-	/**联系电话*/
+	/***/
 	private String number; 
-	/**商标*/
+	/***/
 	private String trademark; 
-	/**广告牌*/
+	/***/
 	private String advertising; 
-	/**公告*/
+	/***/
 	private String notice; 
 	/**
 	 * 实例化

@@ -7,17 +7,176 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af43599c-960e-4242-a9d4-d76064716388" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dao/BillMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dao/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dao/RbillMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Bill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Rbill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/BillService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/BillServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/RbillService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/RbillServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/BillMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ProductMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/RbillMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/css/verify.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/fonts/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/fonts/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/fonts/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/fonts/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/img/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/img/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/js/verify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/dao/BillMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/dao/ProductMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/dao/RbillMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/Bill.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/Product.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/Rbill.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/service/BillService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/service/BillServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/service/ProductService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/service/ProductServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/service/RbillService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ccit/service/RbillServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/BillMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ProductMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/RbillMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/Admin/account/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/Admin/index/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dao/BillMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dao/ProductMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dao/RbillMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Bill.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Product.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Rbill.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/BillService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/BillServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/ProductService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/ProductServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/RbillService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/RbillServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/BillMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/ProductMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/RbillMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/lib/commons-fileupload-1.3.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/lib/commons-io-2.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/07d76acb-8feb-4b04-ac03-0c4a5b8f6326.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/1ac340cc-b375-4a27-8156-13d53203b8b1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/2f31e200-d8eb-44c7-90c7-1a8bcbebb3db.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/402e9eb9-87ec-4770-ac71-c26ad183b1a8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/54d85d17-971a-43e2-8e64-d976258f0fff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/5d12fbf9-6a46-433e-9100-69813d9429da.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/5f4f3053-0a6f-4245-b924-6c0c6ba624ed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/73e03c90-c90d-482e-a414-8bd88edc0956.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/7c137ad0-5439-4ab1-a836-958838f63ae5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/b0052bd9-a970-474f-8c1c-31e48e7a4d3f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/bd2ad105-75c1-4464-9fac-a518645d8739.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/c55a11af-d624-489c-8a4a-80830ebee248.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/ccec769c-a618-425f-a55a-aa36c2f0fff3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/eb1b4344-88f7-47ad-acaf-46a39a1ea9a4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/ed896e6b-b0fd-4cec-b346-07380029d3a0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/201810/f76eb869-cc23-41ab-84f3-667f1217bb09.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/上唇色加纹身.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/人物磨皮.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/投资列表1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/换手.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/换背景.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/换脸.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/精细扣毛发.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/upload/羽化.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/css/verify.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/fonts/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/fonts/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/fonts/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/fonts/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/img/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/img/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/js/borrow_index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/p3p/lib/js/verify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/borrow/BorrowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/borrow/BorrowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/index/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/index/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowproductMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dao/IndexpageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dao/IndexpageMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Borrowing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Borrowing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Borrowproduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Capital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Capital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Creditgrade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Creditgrade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Indexpage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Indexpage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Permissions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Repayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Repayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Userdata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/dml/Userdata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowproductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowproductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/CapitalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/CapitalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/CreditgradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/CreditgradeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/CreditgradeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/CreditgradeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/PermissionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/PermissionsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/RepaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/RepaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/UserRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/UserRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccit/service/UserdataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccit/service/UserdataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BorrowingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BorrowingMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BorrowproductMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RepaymentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RepaymentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/Public/Head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/Public/Head.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/borrow/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/borrow/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/lib/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/lib/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/controller/Home/borrow/BorrowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/lib/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/lib/js/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/controller/Home/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/controller/Home/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/controller/Home/borrow/BorrowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/controller/Home/borrow/BorrowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/dao/BorrowproductMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/dml/Borrowing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/Borrowing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/dml/Borrowproduct.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/dml/Capital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/Capital.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/dml/Creditgrade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/Creditgrade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/dml/Repayment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/Repayment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/dml/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/dml/Userdata.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/dml/Userdata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/service/BorrowproductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/service/BorrowproductServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ccit/service/CreditgradeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ccit/service/CreditgradeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BorrowingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/BorrowingMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BorrowproductMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/RepaymentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/RepaymentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/Home/Public/Head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/Home/Public/Head.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/Home/borrow/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/Home/borrow/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/p3p/lib/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/lib/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/Home/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/Home/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/controller/Home/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/controller/Home/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/controller/Home/borrow/BorrowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/controller/Home/borrow/BorrowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dao/BorrowproductMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Borrowing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Borrowing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Borrowproduct.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Capital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Capital.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Creditgrade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Creditgrade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Repayment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Repayment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Userdata.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/dml/Userdata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/BorrowproductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/BorrowproductServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/CreditgradeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/com/ccit/service/CreditgradeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/BorrowingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/BorrowingMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/BorrowproductMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/RepaymentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/RepaymentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/WEB-INF/classes/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/p3p/lib/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/p3p/lib/js/register.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,6 +185,10 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+    <option name="PARALLEL_COMPILATION" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -45,101 +208,126 @@
     <session id="-1412877349">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="13" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.38" value="1" />
+          <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.52" value="1" />
+          <entry key="project.open.time.55" value="1" />
+          <entry key="project.open.time.58" value="1" />
+          <entry key="project.open.time.70" value="1" />
           <entry key="project.open.time.74" value="1" />
           <entry key="project.open.time.75" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.open.time.92" value="1" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="37" />
-          <entry key="dummy" value="150" />
-          <entry key="java" value="2339" />
-          <entry key="js" value="713" />
-          <entry key="jsp" value="1448" />
+          <entry key="dummy" value="174" />
+          <entry key="java" value="3534" />
+          <entry key="js" value="1200" />
+          <entry key="jsp" value="1694" />
           <entry key="properties" value="11" />
-          <entry key="txt" value="31" />
-          <entry key="xml" value="249" />
+          <entry key="txt" value="43" />
+          <entry key="xml" value="365" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="37" />
-          <entry key="JAVA" value="2339" />
-          <entry key="JSP" value="1448" />
-          <entry key="JavaScript" value="713" />
-          <entry key="PLAIN_TEXT" value="181" />
+          <entry key="JAVA" value="3534" />
+          <entry key="JSP" value="1694" />
+          <entry key="JavaScript" value="1200" />
+          <entry key="PLAIN_TEXT" value="217" />
           <entry key="Properties" value="11" />
-          <entry key="XML" value="249" />
+          <entry key="XML" value="365" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="4" />
-          <entry key="css" value="4" />
-          <entry key="java" value="164" />
-          <entry key="js" value="8" />
-          <entry key="jsp" value="35" />
+          <entry key="class" value="6" />
+          <entry key="css" value="6" />
+          <entry key="java" value="299" />
+          <entry key="js" value="18" />
+          <entry key="jsp" value="47" />
           <entry key="kt" value="1" />
           <entry key="properties" value="1" />
-          <entry key="xml" value="73" />
+          <entry key="svg" value="1" />
+          <entry key="ttf" value="1" />
+          <entry key="xml" value="117" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="4" />
-          <entry key="CSS" value="4" />
-          <entry key="JAVA" value="164" />
-          <entry key="JSP" value="35" />
-          <entry key="JavaScript" value="8" />
+          <entry key="CLASS" value="6" />
+          <entry key="CSS" value="6" />
+          <entry key="Font" value="1" />
+          <entry key="JAVA" value="299" />
+          <entry key="JSP" value="47" />
+          <entry key="JavaScript" value="18" />
           <entry key="Kotlin" value="1" />
           <entry key="Properties" value="1" />
-          <entry key="XML" value="73" />
+          <entry key="SVG" value="1" />
+          <entry key="XML" value="117" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/borrow/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="113" column="180" lean-forward="true" selection-start-line="113" selection-start-column="180" selection-end-line="113" selection-end-column="196" />
-              <folding>
-                <element signature="n#style#0;n#table#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#head#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#td#1;n#tr#4;n#table#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#head#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/borrow/BorrowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="16" selection-start-line="16" selection-end-line="17" />
+            <state relative-caret-position="22">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#470#471#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Borrowing.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="24" column="28" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowingServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowingMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1140">
+              <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -159,13 +347,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selectI</find>
-      <find>时间</find>
-      <find>./lib/img/zxcf_logo.png</find>
-      <find>./lib/img/banner01.png</find>
-      <find>换卡后放假啊客户看 将黑金卡号看见啊后防盗卡……</find>
-      <find>href</find>
-      <find>href=&quot;http://demo1.mycodes.net/moban/P2P_wangdailicai/login.html#&quot;</find>
       <find>返回</find>
       <find>alert</find>
       <find>Save</find>
@@ -189,6 +370,13 @@
       <find>zxcf_menu_wper</find>
       <find>profinish.png</find>
       <find>借款用途</find>
+      <find>ondrag</find>
+      <find>userdateId</find>
+      <find>Sysout</find>
+      <find>System</find>
+      <find>id</find>
+      <find>guarantee</find>
+      <find>insertNotNullBorrowing</find>
     </findStrings>
     <replaceStrings>
       <replace>com.ccit.dml.User</replace>
@@ -201,57 +389,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowingServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowingMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/BorrowingMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/dao/UserRoleDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/dao/UserRoleMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/UserRoleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/CapitalServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/CreditgradeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/PermissionsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/RoleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/UserdataServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/CapitalMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/CreditgradeMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/IndexpageMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/PermissionsMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserdataMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserRoleMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/RepaymentMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/BorrowproductMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowproductService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/CapitalService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/CapitalServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowproductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/CreditgradeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/CreditgradeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/PermissionsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/PermissionsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/RepaymentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/RoleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/RoleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/UserdataService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/UserdataServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/UserRoleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/UserRoleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/UserMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/index/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/lib/js/register.js" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ccit/dao/RepaymentDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ccit/dao/RepaymentMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowproductServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/RepaymentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/BillServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/RbillServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/RepaymentServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowproductService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/IndexController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/IndexpageMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/dao/IndexpageMapper.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/index/IndexController.java" />
-        <option value="$PROJECT_DIR$/src/test/java/UserMapperTest.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/common/UUIDUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/lib/js/register.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/Public/DoSaveUser.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/account/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/investment/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/index/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/index/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/account/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/lib/css/style.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/Public/Head.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/borrow/BorrowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ccit/dml/Borrowing.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowingDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowingMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowingServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/borrow/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/BorrowingMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/BillMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ProductMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/RbillMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/RepaymentMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/borrow/BorrowController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js" />
       </list>
     </option>
   </component>
@@ -307,6 +495,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="p3p" type="58d84e3e:PackageViewProjectNode" />
+              <item name="p3p" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -366,17 +565,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="p3p" type="58d84e3e:PackageViewProjectNode" />
-              <item name="p3p" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -407,66 +595,6 @@
               <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="p3p" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ccit" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="p3p" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ccit" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="p3p" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ccit" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Home" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="p3p" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ccit" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Home" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="borrow" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="p3p" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ccit" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dml" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="p3p" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -483,26 +611,8 @@
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="WEB-INF" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="p3p" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="WEB-INF" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Home" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="p3p" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="p3p" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="WEB-INF" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Home" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="lib" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -513,27 +623,27 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539796251462" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540020690878" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2632184" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ZC\p3p\src\main\webapp\lib" />
-      <recent name="C:\Users\ZC\p3p\src\main\java\com\ccit\service" />
-      <recent name="C:\Users\ZC\p3p\src\main\java\com\ccit\dml" />
-      <recent name="C:\Users\ZC\p3p\src\main\java\com\ccit\dao" />
-      <recent name="C:\Users\ZC\p3p\src\main\resources\mapper" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ZC\p3p\src\main\webapp\lib\easyui-1.6.6" />
       <recent name="C:\Users\ZC\p3p\src\main\webapp\lib\img" />
       <recent name="C:\Users\ZC\p3p\src\main\webapp\WEB-INF\Home" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ZC\p3p\src\main\java\com\ccit\dao" />
+      <recent name="C:\Users\ZC\p3p\src\main\java\com\ccit\dml" />
+      <recent name="C:\Users\ZC\p3p\src\main\java\com\ccit\service" />
+      <recent name="C:\Users\ZC\p3p\src\main\resources\mapper" />
+      <recent name="C:\Users\ZC\p3p\src\main\webapp\lib\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -563,7 +673,6 @@
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="p3p:war exploded">
           <settings>
@@ -628,7 +737,6 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <method v="2">
-        <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
           <artifact name="p3p:war exploded" />
         </option>
@@ -661,7 +769,16 @@
       <workItem from="1539648806804" duration="12894000" />
       <workItem from="1539670999930" duration="2055000" />
       <workItem from="1539691391592" duration="5523000" />
-      <workItem from="1539775222576" duration="18123000" />
+      <workItem from="1539775222576" duration="18175000" />
+      <workItem from="1539821440969" duration="12992000" />
+      <workItem from="1539835987335" duration="14917000" />
+      <workItem from="1539869411193" duration="5671000" />
+      <workItem from="1539878784373" duration="618000" />
+      <workItem from="1539924286251" duration="7878000" />
+      <workItem from="1539937056646" duration="973000" />
+      <workItem from="1539938070182" duration="5144000" />
+      <workItem from="1540014288933" duration="6406000" />
+      <workItem from="1540020771348" duration="1813000" />
     </task>
     <task id="LOCAL-00001" summary="后端首页">
       <created>1539692739445</created>
@@ -698,7 +815,14 @@
       <option name="project" value="LOCAL" />
       <updated>1539775936316</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="借款表达验证">
+      <created>1539796298688</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1539796298688</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -734,9 +858,9 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99407000" />
+    <option name="totallyTimeSpent" value="155871000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -747,31 +871,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22520107" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49537036" visible="true" weight="0.2546917" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="Web" order="7" sideWeight="0.5046296" side_tool="true" weight="0.2546917" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32919255" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1713881" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" visible="true" weight="0.3432624" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.388102" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.3427762" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32919255" />
-      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32919255" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3286119" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.2822695" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.08794326" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32919255" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.0878187" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.49865952" weight="0.32907802" />
+      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.49865952" weight="0.3286119" />
+      <window_info anchor="bottom" id="Problems" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -793,372 +917,326 @@
     <MESSAGE value="第二次提交" />
     <MESSAGE value="后端首页" />
     <MESSAGE value="第三次测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="第三次测试" />
+    <MESSAGE value="借款表达验证" />
+    <option name="LAST_COMMIT_MESSAGE" value="借款表达验证" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowingMapper.java</url>
+          <line>68</line>
+          <properties class="com.ccit.dao.BorrowingMapper" method="insertNotNullBorrowing" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/borrow/BorrowController.java</url>
-          <line>16</line>
+          <line>60</line>
           <properties />
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="a" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RepaymentMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/js/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+        <state relative-caret-position="190">
+          <caret line="64" column="34" lean-forward="true" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Borrowproduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BorrowproductMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Repayment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dao/RepaymentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/RepaymentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="85" column="35" lean-forward="true" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowproductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowproductServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/RepaymentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/easyui/src/easyloader.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/bootstrap-3.3.7/js/npm.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/common/Assist.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2242">
-          <caret line="158" column="7" lean-forward="true" selection-start-line="158" selection-start-column="7" selection-end-line="158" selection-end-column="7" />
+        <state relative-caret-position="323">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dao/CapitalMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dao/CreditgradeMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="-76">
           <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.5.RELEASE/spring-web-4.3.5.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PermissionsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Repayment.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Bill.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="33" column="94" selection-start-line="33" selection-start-column="94" selection-end-line="33" selection-end-column="94" />
+        <state relative-caret-position="190">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dao/IndexpageMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Capital.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+        <state relative-caret-position="19">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.5.RELEASE/spring-webmvc-4.3.5.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Creditgrade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/IndexpageMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="16" selection-start-line="16" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1102">
-          <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.5.RELEASE/spring-webmvc-4.3.5.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="20" column="239" selection-start-line="20" selection-start-column="239" selection-end-line="20" selection-end-column="239" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.5.RELEASE/spring-webmvc-4.3.5.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="112" column="16" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="58" column="59" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="59" />
+        <state relative-caret-position="190">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Indexpage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1272">
-          <caret line="164" column="28" selection-start-line="164" selection-start-column="22" selection-end-line="164" selection-end-column="28" />
+        <state relative-caret-position="190">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Permissions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="190">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/easyui-1.6.6/src/easyloader.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Rbill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dao/RepaymentMapper.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/index/IndexController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/BillService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="171">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/UserMapperTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/BillServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="30" />
+          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/UserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/CapitalServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        <state relative-caret-position="148">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.5.RELEASE/spring-web-4.3.5.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/IndexpageServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="219" selection-start-line="219" selection-end-line="219" />
+        <state relative-caret-position="148">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/common/UUIDUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/PermissionsServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="80" column="20" lean-forward="true" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
+        <state relative-caret-position="148">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/ProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-494">
-          <caret line="133" column="20" lean-forward="true" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="20" />
+        <state relative-caret-position="224">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/Public/DoSaveUser.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/RbillServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2413">
-          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
+        <state relative-caret-position="224">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/RepaymentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="79" column="35" lean-forward="true" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
+        <state relative-caret-position="216">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/RoleServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="92" column="36" lean-forward="true" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2253#2268#0" expanded="true" />
-            <element signature="e#2924#2939#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="190">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="110" selection-start-line="17" selection-start-column="97" selection-end-line="17" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/account/accountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/investment/InvestmentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/account/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="51" column="26" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/account/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Admin/index/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/investment/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/index/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="45" />
-        </state>
+        <state relative-caret-position="-513" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1066">
-          <caret line="1752" column="35" selection-start-line="1752" selection-start-column="35" selection-end-line="1752" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/js/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="60" column="21" lean-forward="true" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/Public/Head.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Borrowing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="65" column="45" lean-forward="true" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/borrow/BorrowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="16" selection-start-line="16" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#470#471#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="152">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Home/borrow/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="113" column="180" lean-forward="true" selection-start-line="113" selection-start-column="180" selection-end-line="113" selection-end-column="196" />
+        <state relative-caret-position="218">
+          <caret line="151" column="119" selection-start-line="151" selection-start-column="104" selection-end-line="151" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BillMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CapitalMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserdataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserRoleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RepaymentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RbillMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ProductMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="23" lean-forward="true" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/IndexpageMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CreditgradeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.5.RELEASE/spring-web-4.3.5.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="228" selection-start-line="228" selection-end-line="228" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="38" column="58" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="824">
+          <caret line="110" column="45" lean-forward="true" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BorrowingMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="69" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/controller/Home/borrow/BorrowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
           <folding>
-            <element signature="n#style#0;n#table#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#head#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#1;n#tr#4;n#table#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#head#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/service/BorrowingServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dao/BorrowingMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ccit/dml/Borrowing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/js/borrow_index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
         </state>
       </provider>
     </entry>

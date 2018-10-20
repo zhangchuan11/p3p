@@ -2,6 +2,7 @@ package com.ccit.controller.Home;
 
 import javax.servlet.http.HttpSession;
 
+import com.ccit.dml.User;
 import com.common.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ccit.service.UserService;
-import com.ccit.dml.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +51,7 @@ public class LoginController {
                 mvc.setViewName("Home/login");
             } else {
                 JSONObject UserData = JSONObject.parseObject(jsStr.getString("data"));
-                if (Integer.parseInt(UserData.getString("lck")) == 0) {
+                if (Integer.parseInt(UserData.getString("loc")) == 0) {
                     mvc.addObject("msg", "用户已被锁定");
                     mvc.setViewName("Home/login");
                 } else {

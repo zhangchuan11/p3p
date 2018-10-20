@@ -9,24 +9,18 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class Repayment {
-	/***/
+	/**标识*/
 	private String id; 
-	/**还款人*/
-	private String rName; 
-	/**还款金额*/
-	private Double rMoney; 
-	/**还款总金额*/
-	private Double rAllmoney; 
-	/**剩余还款金额*/
-	private Double rResiduemoney; 
-	/**还款时间*/
-	private String rTime; 
-	/**还款方式*/
-	private String rWay; 
-	/**状态(0：还款中1：逾期中)*/
+	/**投资人*/
+	private String rname; 
+	/**投资金额*/
+	private String rmoney; 
+	/**状态(0：收益中1：收益完成)*/
 	private String rState; 
-	/**产品类型*/
-	private String rProductId; 
+	/**投资时间*/
+	private String rtime; 
+	/**项目id*/
+	private String bid; 
 	/**
 	 * 实例化
 	 */
@@ -43,29 +37,20 @@ public class Repayment {
 		if (obj.get("id") instanceof String) {
 			this.setId((String) obj.get("id"));
 		}
-		if (obj.get("rName") instanceof String) {
-			this.setRName((String) obj.get("rName"));
+		if (obj.get("rname") instanceof String) {
+			this.setRname((String) obj.get("rname"));
 		}
-		if (obj.get("rMoney") instanceof Number) {
-			this.setRMoney(((Number) obj.get("rMoney")).doubleValue());
-		}
-		if (obj.get("rAllmoney") instanceof Number) {
-			this.setRAllmoney(((Number) obj.get("rAllmoney")).doubleValue());
-		}
-		if (obj.get("rResiduemoney") instanceof Number) {
-			this.setRResiduemoney(((Number) obj.get("rResiduemoney")).doubleValue());
-		}
-		if (obj.get("rTime") instanceof String) {
-			this.setRTime((String) obj.get("rTime"));
-		}
-		if (obj.get("rWay") instanceof String) {
-			this.setRWay((String) obj.get("rWay"));
+		if (obj.get("rmoney") instanceof String) {
+			this.setRmoney((String) obj.get("rmoney"));
 		}
 		if (obj.get("rState") instanceof String) {
 			this.setRState((String) obj.get("rState"));
 		}
-		if (obj.get("rProductId") instanceof String) {
-			this.setRProductId((String) obj.get("rProductId"));
+		if (obj.get("rtime") instanceof String) {
+			this.setRtime((String) obj.get("rtime"));
+		}
+		if (obj.get("bid") instanceof String) {
+			this.setBid((String) obj.get("bid"));
 		}
 	}
 	
@@ -79,29 +64,20 @@ public class Repayment {
 		if (this.getId() != null) {
 			result.put("id",this.getId());
 		}
-		if (this.getRName() != null) {
-			result.put("rName",this.getRName());
+		if (this.getRname() != null) {
+			result.put("rname",this.getRname());
 		}
-		if (this.getRMoney() != null) {
-			result.put("rMoney",this.getRMoney());
-		}
-		if (this.getRAllmoney() != null) {
-			result.put("rAllmoney",this.getRAllmoney());
-		}
-		if (this.getRResiduemoney() != null) {
-			result.put("rResiduemoney",this.getRResiduemoney());
-		}
-		if (this.getRTime() != null) {
-			result.put("rTime",this.getRTime());
-		}
-		if (this.getRWay() != null) {
-			result.put("rWay",this.getRWay());
+		if (this.getRmoney() != null) {
+			result.put("rmoney",this.getRmoney());
 		}
 		if (this.getRState() != null) {
 			result.put("rState",this.getRState());
 		}
-		if (this.getRProductId() != null) {
-			result.put("rProductId",this.getRProductId());
+		if (this.getRtime() != null) {
+			result.put("rtime",this.getRtime());
+		}
+		if (this.getBid() != null) {
+			result.put("bid",this.getBid());
 		}
 		return result;
 	}
@@ -126,111 +102,39 @@ public class Repayment {
 	}
 	
 	/**
-	 * 获取rName
+	 * 获取rname
 	 * 
 	 * @return
 	 */
-	public String getRName() {
-		return rName;
+	public String getRname() {
+		return rname;
 	}
 
 	/**
-	 * 设置rName
+	 * 设置rname
 	 * 
-	 * @param rName
+	 * @param rname
 	 */
-	public void setRName(String rName) {
-		this.rName = rName;
+	public void setRname(String rname) {
+		this.rname = rname;
 	}
 	
 	/**
-	 * 获取rMoney
+	 * 获取rmoney
 	 * 
 	 * @return
 	 */
-	public Double getRMoney() {
-		return rMoney;
+	public String getRmoney() {
+		return rmoney;
 	}
 
 	/**
-	 * 设置rMoney
+	 * 设置rmoney
 	 * 
-	 * @param rMoney
+	 * @param rmoney
 	 */
-	public void setRMoney(Double rMoney) {
-		this.rMoney = rMoney;
-	}
-	
-	/**
-	 * 获取rAllmoney
-	 * 
-	 * @return
-	 */
-	public Double getRAllmoney() {
-		return rAllmoney;
-	}
-
-	/**
-	 * 设置rAllmoney
-	 * 
-	 * @param rAllmoney
-	 */
-	public void setRAllmoney(Double rAllmoney) {
-		this.rAllmoney = rAllmoney;
-	}
-	
-	/**
-	 * 获取rResiduemoney
-	 * 
-	 * @return
-	 */
-	public Double getRResiduemoney() {
-		return rResiduemoney;
-	}
-
-	/**
-	 * 设置rResiduemoney
-	 * 
-	 * @param rResiduemoney
-	 */
-	public void setRResiduemoney(Double rResiduemoney) {
-		this.rResiduemoney = rResiduemoney;
-	}
-	
-	/**
-	 * 获取rTime
-	 * 
-	 * @return
-	 */
-	public String getRTime() {
-		return rTime;
-	}
-
-	/**
-	 * 设置rTime
-	 * 
-	 * @param rTime
-	 */
-	public void setRTime(String rTime) {
-		this.rTime = rTime;
-	}
-	
-	/**
-	 * 获取rWay
-	 * 
-	 * @return
-	 */
-	public String getRWay() {
-		return rWay;
-	}
-
-	/**
-	 * 设置rWay
-	 * 
-	 * @param rWay
-	 */
-	public void setRWay(String rWay) {
-		this.rWay = rWay;
+	public void setRmoney(String rmoney) {
+		this.rmoney = rmoney;
 	}
 	
 	/**
@@ -252,26 +156,44 @@ public class Repayment {
 	}
 	
 	/**
-	 * 获取rProductId
+	 * 获取rtime
 	 * 
 	 * @return
 	 */
-	public String getRProductId() {
-		return rProductId;
+	public String getRtime() {
+		return rtime;
 	}
 
 	/**
-	 * 设置rProductId
+	 * 设置rtime
 	 * 
-	 * @param rProductId
+	 * @param rtime
 	 */
-	public void setRProductId(String rProductId) {
-		this.rProductId = rProductId;
+	public void setRtime(String rtime) {
+		this.rtime = rtime;
+	}
+	
+	/**
+	 * 获取bid
+	 * 
+	 * @return
+	 */
+	public String getBid() {
+		return bid;
+	}
+
+	/**
+	 * 设置bid
+	 * 
+	 * @param bid
+	 */
+	public void setBid(String bid) {
+		this.bid = bid;
 	}
 
 	@Override
 	public String toString() {
-		return "Repayment [id=" + id + " , rName=" + rName + " , rMoney=" + rMoney + " , rAllmoney=" + rAllmoney + " , rResiduemoney=" + rResiduemoney + " , rTime=" + rTime + " , rWay=" + rWay + " , rState=" + rState + " , rProductId=" + rProductId + "  ]";
+		return "Repayment [id=" + id + " , rname=" + rname + " , rmoney=" + rmoney + " , rState=" + rState + " , rtime=" + rtime + " , bid=" + bid + "  ]";
 	
 	}
 	

@@ -49,6 +49,9 @@
                             <p class="mt20">
                                 <input type="password" name="PassWord" placeholder="密码" class="lg_input02 lg_input">
                             </p>
+                            <%--<p class="mt20">--%>
+                              <%--<div id="mpanel6" style="margin-top:50px;"> </div>--%>
+                            <%--</p>--%>
                             <h2 class="lg_sec_tit clearfix">
                                 <h3><span class="label label-danger">${msg}</span></h3>
                             </h2>
@@ -113,5 +116,6 @@
         </div>
     </div>
     <!-- footer end -->
+
     </body>
 </html>

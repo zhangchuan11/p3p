@@ -6,7 +6,7 @@
 		<id column="id" property="id" />
 		<result column="LoginName" property="loginName" />
 		<result column="PassWord" property="passWord" />
-		<result column="lck" property="lck" />
+		<result column="loc" property="loc" />
 		<result column="UserDate_ID" property="userdateId" />
 		<result column="Repayment_ID" property="repaymentId" />
 		<result column="Borrowing_ID" property="borrowingId" />
@@ -52,7 +52,7 @@
 
 	<!-- 数据库中表名为:user的列名 -->
 	<sql id="user_Column">
-		id,LoginName,PassWord,lck,UserDate_ID,Repayment_ID,Borrowing_ID,Role_ID,Capital_ID
+		id,LoginName,PassWord,loc,UserDate_ID,Repayment_ID,Borrowing_ID,Role_ID,Capital_ID
 	</sql>
 
 	<!--获得类名为:User对应的数据库表的数据总行数 -->
@@ -83,12 +83,11 @@
 			<when test="rowSize !=null">LIMIT #{rowSize}</when>
 		</choose>
 	</select>
-	
 	<!-- 通过User的id获得对应数据库中表的数据对象 -->
-	<select id="selectUserById"  parameterType="String" resultMap="result_User_Map"> 
-		select 
-		<include refid="user_Column" /> 
-		from user 
+	<select id="selectUserById" parameterType="String" resultMap="result_User_Map">
+		select
+		<include refid="user_Column" />
+		from user
 		where id = #{id}
 	</select>
 	
@@ -100,7 +99,7 @@
 		<where>
 		<if test="loginName != null"> and LoginName = #{loginName}</if>
 		<if test="passWord != null"> and PassWord = #{passWord}</if>
-		<if test="lck != null"> and lck = #{lck}</if>
+		<if test="loc != null"> and loc = #{loc}</if>
 		<if test="userdateId != null"> and UserDate_ID = #{userdateId}</if>
 		<if test="repaymentId != null"> and Repayment_ID = #{repaymentId}</if>
 		<if test="borrowingId != null"> and Borrowing_ID = #{borrowingId}</if>
@@ -119,7 +118,7 @@
 		<where>
 		<if test="loginName != null"> and LoginName = #{loginName}</if>
 		<if test="passWord != null"> and PassWord = #{passWord}</if>
-		<if test="lck != null"> and lck = #{lck}</if>
+		<if test="loc != null"> and loc = #{loc}</if>
 		<if test="userdateId != null"> and UserDate_ID = #{userdateId}</if>
 		<if test="repaymentId != null"> and Repayment_ID = #{repaymentId}</if>
 		<if test="borrowingId != null"> and Borrowing_ID = #{borrowingId}</if>
@@ -132,8 +131,8 @@
 	<!-- 将User插入到对应数据库的表中,包括属性值为null的数据 -->
 	<insert id="insertUser" parameterType="com.ccit.dml.User">
 		insert into 
-		user (id,LoginName,PassWord,lck,UserDate_ID,Repayment_ID,Borrowing_ID,Role_ID,Capital_ID) 
-		values(#{id},#{loginName},#{passWord},#{lck},#{userdateId},#{repaymentId},#{borrowingId},#{roleId},#{capitalId})
+		user (id,LoginName,PassWord,loc,UserDate_ID,Repayment_ID,Borrowing_ID,Role_ID,Capital_ID) 
+		values(#{id},#{loginName},#{passWord},#{loc},#{userdateId},#{repaymentId},#{borrowingId},#{roleId},#{capitalId})
 	</insert>
 
 	<!-- 将User中属性值不为null的数据,插入到对应数据库的表中 -->
@@ -143,7 +142,7 @@
 			<if test="id != null">id,</if>
 			<if test="loginName != null">LoginName,</if>
 			<if test="passWord != null">PassWord,</if>
-			<if test="lck != null">lck,</if>
+			<if test="loc != null">loc,</if>
 			<if test="userdateId != null">UserDate_ID,</if>
 			<if test="repaymentId != null">Repayment_ID,</if>
 			<if test="borrowingId != null">Borrowing_ID,</if>
@@ -154,7 +153,7 @@
 			<if test="id != null">#{id},</if>
 			<if test="loginName != null">#{loginName},</if>
 			<if test="passWord != null">#{passWord},</if>
-			<if test="lck != null">#{lck},</if>
+			<if test="loc != null">#{loc},</if>
 			<if test="userdateId != null">#{userdateId},</if>
 			<if test="repaymentId != null">#{repaymentId},</if>
 			<if test="borrowingId != null">#{borrowingId},</if>
@@ -165,10 +164,10 @@
 
 	<!-- 将User批量插入到对应数据库的表中 -->
 	<insert id="insertUserByBatch" parameterType="ArrayList">
-		insert into user(id,LoginName,PassWord,lck,UserDate_ID,Repayment_ID,Borrowing_ID,Role_ID,Capital_ID) values
+		insert into user(id,LoginName,PassWord,loc,UserDate_ID,Repayment_ID,Borrowing_ID,Role_ID,Capital_ID) values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{id},#{loginName},#{passWord},#{lck},#{userdateId},#{repaymentId},#{borrowingId},#{roleId},#{capitalId})
+			(#{id},#{loginName},#{passWord},#{loc},#{userdateId},#{repaymentId},#{borrowingId},#{roleId},#{capitalId})
 		</foreach>
 	</insert>
 	
@@ -192,7 +191,7 @@
 		<set>
 			LoginName = #{loginName} , 
 			PassWord = #{passWord} , 
-			lck = #{lck} , 
+			loc = #{loc} , 
 			UserDate_ID = #{userdateId} , 
 			Repayment_ID = #{repaymentId} , 
 			Borrowing_ID = #{borrowingId} , 
@@ -208,7 +207,7 @@
 		<set>
 					<if test="loginName != null">LoginName = #{loginName},</if>
 					<if test="passWord != null">PassWord = #{passWord},</if>
-					<if test="lck != null">lck = #{lck},</if>
+					<if test="loc != null">loc = #{loc},</if>
 					<if test="userdateId != null">UserDate_ID = #{userdateId},</if>
 					<if test="repaymentId != null">Repayment_ID = #{repaymentId},</if>
 					<if test="borrowingId != null">Borrowing_ID = #{borrowingId},</if>
@@ -225,7 +224,7 @@
 			id = #{enti.id},
 			LoginName = #{enti.loginName},
 			PassWord = #{enti.passWord},
-			lck = #{enti.lck},
+			loc = #{enti.loc},
 			UserDate_ID = #{enti.userdateId},
 			Repayment_ID = #{enti.repaymentId},
 			Borrowing_ID = #{enti.borrowingId},
@@ -244,7 +243,7 @@
 			<if test="enti.id != null">id = #{enti.id},</if>
 			<if test="enti.loginName != null">LoginName = #{enti.loginName},</if>
 			<if test="enti.passWord != null">PassWord = #{enti.passWord},</if>
-			<if test="enti.lck != null">lck = #{enti.lck},</if>
+			<if test="enti.loc != null">loc = #{enti.loc},</if>
 			<if test="enti.userdateId != null">UserDate_ID = #{enti.userdateId},</if>
 			<if test="enti.repaymentId != null">Repayment_ID = #{enti.repaymentId},</if>
 			<if test="enti.borrowingId != null">Borrowing_ID = #{enti.borrowingId},</if>

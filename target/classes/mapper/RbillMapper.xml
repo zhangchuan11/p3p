@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccit.dao.RbillMapper">
+	<!-- Rbill的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_Rbill_Map" type="com.ccit.dml.Rbill">
+		
+		<result column="Rid" property="rid" />
+		<result column="userid" property="userid" />
+		<result column="Summoney" property="summoney" />
+		<result column="Rtime" property="rtime" />
+		<result column="Endtime" property="endtime" />
+		<result column="Ymoney" property="ymoney" />
+		<result column="Amoney" property="amoney" />
+	</resultMap>
+
+	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+	<sql id="assist">
+		<where>
+			<foreach collection="require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- updateAssist用于更新数据查询辅助工具类,作用assist与一致 -->
+	<sql id="updateAssist">
+		<where>
+			<foreach collection="assist.require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- 数据库中表名为:rbill的列名 -->
+	<sql id="rbill_Column">
+		Rid,userid,Summoney,Rtime,Endtime,Ymoney,Amoney
+	</sql>
+
+	<!--获得类名为:Rbill对应的数据库表的数据总行数 -->
+	<select id="getRbillRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
+		select count(*) from rbill
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</select>
+	
+	<!-- 获得类名为:Rbill对应数据库中表的数据集合 -->
+	<select id="selectRbill" parameterType="com.common.Assist" resultMap="result_Rbill_Map">
+		select
+		<if test="distinct !=null">${distinct}</if>
+		<choose>
+			<when test="resultColumn!=null">${resultColumn}</when>
+			<otherwise>
+				<include refid="rbill_Column" />
+			</otherwise>
+		</choose>
+		from rbill
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+		<if test="order !=null">${order}</if>
+		<choose>
+			<when test="startRow !=null and rowSize !=null">LIMIT #{startRow},#{rowSize} </when>
+			<when test="rowSize !=null">LIMIT #{rowSize}</when>
+		</choose>
+	</select>
+	
+	<!-- 获得一个Rbill对象,以参数Rbill对象中不为空的属性作为条件进行查询 -->
+	<select id="selectRbillObjSingle" parameterType="com.ccit.dml.Rbill" resultMap="result_Rbill_Map">
+		select
+		<include refid="rbill_Column" />
+		from rbill
+		<where>
+		<if test="rid != null"> and Rid = #{rid}</if>
+		<if test="userid != null"> and userid = #{userid}</if>
+		<if test="summoney != null"> and Summoney = #{summoney}</if>
+		<if test="rtime != null"> and Rtime = #{rtime}</if>
+		<if test="endtime != null"> and Endtime = #{endtime}</if>
+		<if test="ymoney != null"> and Ymoney = #{ymoney}</if>
+		<if test="amoney != null"> and Amoney = #{amoney}</if>
+		
+		</where>
+		LIMIT 1
+	</select>
+	
+	<!-- 获得Rbill对象,以参数Rbill对象中不为空的属性作为条件进行查询 -->
+	<select id="selectRbillByObj" parameterType="com.ccit.dml.Rbill" resultMap="result_Rbill_Map">
+		select
+		<include refid="rbill_Column" />
+		from rbill
+		<where>
+		<if test="rid != null"> and Rid = #{rid}</if>
+		<if test="userid != null"> and userid = #{userid}</if>
+		<if test="summoney != null"> and Summoney = #{summoney}</if>
+		<if test="rtime != null"> and Rtime = #{rtime}</if>
+		<if test="endtime != null"> and Endtime = #{endtime}</if>
+		<if test="ymoney != null"> and Ymoney = #{ymoney}</if>
+		<if test="amoney != null"> and Amoney = #{amoney}</if>
+		
+		</where>
+	</select>
+
+	<!-- 将Rbill插入到对应数据库的表中,包括属性值为null的数据 -->
+	<insert id="insertRbill" parameterType="com.ccit.dml.Rbill">
+		insert into 
+		rbill (Rid,userid,Summoney,Rtime,Endtime,Ymoney,Amoney) 
+		values(#{rid},#{userid},#{summoney},#{rtime},#{endtime},#{ymoney},#{amoney})
+	</insert>
+
+	<!-- 将Rbill中属性值不为null的数据,插入到对应数据库的表中 -->
+	<insert id="insertNotNullRbill" parameterType="com.ccit.dml.Rbill">
+		insert into rbill
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="rid != null">Rid,</if>
+			<if test="userid != null">userid,</if>
+			<if test="summoney != null">Summoney,</if>
+			<if test="rtime != null">Rtime,</if>
+			<if test="endtime != null">Endtime,</if>
+			<if test="ymoney != null">Ymoney,</if>
+			<if test="amoney != null">Amoney,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="rid != null">#{rid},</if>
+			<if test="userid != null">#{userid},</if>
+			<if test="summoney != null">#{summoney},</if>
+			<if test="rtime != null">#{rtime},</if>
+			<if test="endtime != null">#{endtime},</if>
+			<if test="ymoney != null">#{ymoney},</if>
+			<if test="amoney != null">#{amoney},</if>
+		</trim>
+	</insert>
+
+	<!-- 将Rbill批量插入到对应数据库的表中 -->
+	<insert id="insertRbillByBatch" parameterType="ArrayList">
+		insert into rbill(Rid,userid,Summoney,Rtime,Endtime,Ymoney,Amoney) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{rid},#{userid},#{summoney},#{rtime},#{endtime},#{ymoney},#{amoney})
+		</foreach>
+	</insert>
+	
+
+	<!-- 通过辅助工具Assist中的条件将Rbill对应的数据库表的数据删除 -->
+	<delete id="deleteRbillByAssist" parameterType="com.common.Assist">
+		delete from rbill
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</delete>
+	
+	
+	
+	<!-- 通过辅助工具Assist中的条件将Rbill中的数据更新到数据库对应的表中,包括值为null的数据 -->
+	<update id="updateRbill" parameterType="map">
+		update rbill
+		<set>
+			Rid = #{enti.rid},
+			userid = #{enti.userid},
+			Summoney = #{enti.summoney},
+			Rtime = #{enti.rtime},
+			Endtime = #{enti.endtime},
+			Ymoney = #{enti.ymoney},
+			Amoney = #{enti.amoney},
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+
+	<!-- 通过辅助工具Assist中的条件将Rbill中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullRbill" parameterType="map">
+		update rbill
+		<set>
+			<if test="enti.rid != null">Rid = #{enti.rid},</if>
+			<if test="enti.userid != null">userid = #{enti.userid},</if>
+			<if test="enti.summoney != null">Summoney = #{enti.summoney},</if>
+			<if test="enti.rtime != null">Rtime = #{enti.rtime},</if>
+			<if test="enti.endtime != null">Endtime = #{enti.endtime},</if>
+			<if test="enti.ymoney != null">Ymoney = #{enti.ymoney},</if>
+			<if test="enti.amoney != null">Amoney = #{enti.amoney},</if>
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+</mapper>

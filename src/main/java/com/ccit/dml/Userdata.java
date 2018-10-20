@@ -11,19 +11,19 @@ import com.alibaba.fastjson.JSONObject;
 public class Userdata {
 	/***/
 	private String id; 
-	/**姓名*/
+	/***/
 	private String name; 
-	/**电话*/
-	private Integer phoneNumber; 
-	/**身份证号码*/
-	private Integer idNumber; 
-	/**地址*/
+	/***/
+	private String phoneNumber; 
+	/***/
+	private String idNumber; 
+	/***/
 	private String address; 
-	/**银行卡*/
-	private Integer bankCard; 
-	/**信用积分*/
-	private Integer creditIntegral; 
-	/**信用等级*/
+	/***/
+	private String bankCard; 
+	/***/
+	private String creditIntegral; 
+	/***/
 	private String creditGrade; 
 	/**
 	 * 实例化
@@ -44,20 +44,20 @@ public class Userdata {
 		if (obj.get("name") instanceof String) {
 			this.setName((String) obj.get("name"));
 		}
-		if (obj.get("phoneNumber") instanceof Number) {
-			this.setPhoneNumber(((Number) obj.get("phoneNumber")).intValue());
+		if (obj.get("phoneNumber") instanceof String) {
+			this.setPhoneNumber((String) obj.get("phoneNumber"));
 		}
-		if (obj.get("idNumber") instanceof Number) {
-			this.setIdNumber(((Number) obj.get("idNumber")).intValue());
+		if (obj.get("idNumber") instanceof String) {
+			this.setIdNumber((String) obj.get("idNumber"));
 		}
 		if (obj.get("address") instanceof String) {
 			this.setAddress((String) obj.get("address"));
 		}
-		if (obj.get("bankCard") instanceof Number) {
-			this.setBankCard(((Number) obj.get("bankCard")).intValue());
+		if (obj.get("bankCard") instanceof String) {
+			this.setBankCard((String) obj.get("bankCard"));
 		}
-		if (obj.get("creditIntegral") instanceof Number) {
-			this.setCreditIntegral(((Number) obj.get("creditIntegral")).intValue());
+		if (obj.get("creditIntegral") instanceof String) {
+			this.setCreditIntegral((String) obj.get("creditIntegral"));
 		}
 		if (obj.get("creditGrade") instanceof String) {
 			this.setCreditGrade((String) obj.get("creditGrade"));
@@ -140,7 +140,7 @@ public class Userdata {
 	 * 
 	 * @return
 	 */
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -149,7 +149,7 @@ public class Userdata {
 	 * 
 	 * @param phoneNumber
 	 */
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
@@ -158,7 +158,7 @@ public class Userdata {
 	 * 
 	 * @return
 	 */
-	public Integer getIdNumber() {
+	public String getIdNumber() {
 		return idNumber;
 	}
 
@@ -167,7 +167,7 @@ public class Userdata {
 	 * 
 	 * @param idNumber
 	 */
-	public void setIdNumber(Integer idNumber) {
+	public void setIdNumber(String idNumber) {
 		this.idNumber = idNumber;
 	}
 	
@@ -194,7 +194,7 @@ public class Userdata {
 	 * 
 	 * @return
 	 */
-	public Integer getBankCard() {
+	public String getBankCard() {
 		return bankCard;
 	}
 
@@ -203,7 +203,7 @@ public class Userdata {
 	 * 
 	 * @param bankCard
 	 */
-	public void setBankCard(Integer bankCard) {
+	public void setBankCard(String bankCard) {
 		this.bankCard = bankCard;
 	}
 	
@@ -212,7 +212,7 @@ public class Userdata {
 	 * 
 	 * @return
 	 */
-	public Integer getCreditIntegral() {
+	public String getCreditIntegral() {
 		return creditIntegral;
 	}
 
@@ -221,7 +221,7 @@ public class Userdata {
 	 * 
 	 * @param creditIntegral
 	 */
-	public void setCreditIntegral(Integer creditIntegral) {
+	public void setCreditIntegral(String creditIntegral) {
 		this.creditIntegral = creditIntegral;
 	}
 	

@@ -9,23 +9,23 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class User {
-	/**标识*/
+	/***/
 	private String id; 
-	/**登陆名*/
+	/***/
 	private String loginName; 
-	/**密码*/
+	/***/
 	private String passWord; 
-	/**状态*/
-	private Integer lck; 
-	/**个人资料*/
+	/**״̬*/
+	private String loc; 
+	/***/
 	private String userdateId; 
-	/**还款信息*/
+	/***/
 	private String repaymentId; 
-	/**借款信息*/
+	/***/
 	private String borrowingId; 
-	/**角色*/
+	/***/
 	private String roleId; 
-	/**资金信息*/
+	/***/
 	private String capitalId; 
 	/**
 	 * 实例化
@@ -49,8 +49,8 @@ public class User {
 		if (obj.get("passWord") instanceof String) {
 			this.setPassWord((String) obj.get("passWord"));
 		}
-		if (obj.get("lck") instanceof Number) {
-			this.setLck(((Number) obj.get("lck")).intValue());
+		if (obj.get("loc") instanceof String) {
+			this.setLoc((String) obj.get("loc"));
 		}
 		if (obj.get("userdateId") instanceof String) {
 			this.setUserdateId((String) obj.get("userdateId"));
@@ -85,8 +85,8 @@ public class User {
 		if (this.getPassWord() != null) {
 			result.put("passWord",this.getPassWord());
 		}
-		if (this.getLck() != null) {
-			result.put("lck",this.getLck());
+		if (this.getLoc() != null) {
+			result.put("loc",this.getLoc());
 		}
 		if (this.getUserdateId() != null) {
 			result.put("userdateId",this.getUserdateId());
@@ -162,21 +162,21 @@ public class User {
 	}
 	
 	/**
-	 * 获取lck
+	 * 获取loc
 	 * 
 	 * @return
 	 */
-	public Integer getLck() {
-		return lck;
+	public String getLoc() {
+		return loc;
 	}
 
 	/**
-	 * 设置lck
+	 * 设置loc
 	 * 
-	 * @param lck
+	 * @param loc
 	 */
-	public void setLck(Integer lck) {
-		this.lck = lck;
+	public void setLoc(String loc) {
+		this.loc = loc;
 	}
 	
 	/**
@@ -271,7 +271,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + " , loginName=" + loginName + " , passWord=" + passWord + " , lck=" + lck + " , userdateId=" + userdateId + " , repaymentId=" + repaymentId + " , borrowingId=" + borrowingId + " , roleId=" + roleId + " , capitalId=" + capitalId + "  ]";
+		return "User [id=" + id + " , loginName=" + loginName + " , passWord=" + passWord + " , loc=" + loc + " , userdateId=" + userdateId + " , repaymentId=" + repaymentId + " , borrowingId=" + borrowingId + " , roleId=" + roleId + " , capitalId=" + capitalId + "  ]";
 	
 	}
 	

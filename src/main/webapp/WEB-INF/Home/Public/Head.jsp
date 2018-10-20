@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="./lib/bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="./lib/easyui-1.6.6/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="./lib/easyui-1.6.6/themes/icon.css">
+<%--<link rel="stylesheet" type="text/css" href="./lib/css/verify.css">--%>
 <script type="text/javascript" src="./lib/easyui-1.6.6/jquery-1.8.0.min.js"></script>
 <script type="text/javascript"  src="./lib/js/prot.js"></script>
 <script src="./lib/js/hm.js"></script>
@@ -13,9 +14,12 @@
 <script type="text/javascript" src="./lib/js/all.js"></script>
 <script type="text/javascript" src="./lib/easyui-1.6.6/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="./lib/easyui-1.6.6/locale/easyui-lang-zh_CN.js"></script>
+<%--<script type="text/javascript" src="./lib/js/verify.js"></script>--%>
 <script type="text/javascript" src="./lib/js/register.js"></script>
 <script type="text/javascript" src="./lib/easyui-1.6.6/jquery.form.min.js"></script>
 <script type="text/javascript" src="./lib/js/borrow_index.js"></script>
+<script type="text/javascript" src="./lib/js/borrow_index.js"></script>
+
 </head>
 <body>
 

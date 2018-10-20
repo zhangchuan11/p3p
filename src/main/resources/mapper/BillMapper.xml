@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccit.dao.BillMapper">
+	<!-- Bill的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_Bill_Map" type="com.ccit.dml.Bill">
+		
+		<result column="id" property="id" />
+		<result column="BorrowId" property="borrowId" />
+		<result column="userid" property="userid" />
+		<result column="Bmoney" property="bmoney" />
+		<result column="Rmoney" property="rmoney" />
+		<result column="Smoney" property="smoney" />
+		<result column="Btime" property="btime" />
+		<result column="Rtime" property="rtime" />
+	</resultMap>
+
+	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+	<sql id="assist">
+		<where>
+			<foreach collection="require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- updateAssist用于更新数据查询辅助工具类,作用assist与一致 -->
+	<sql id="updateAssist">
+		<where>
+			<foreach collection="assist.require" item="req" separator=" ">
+				${req.require}
+				<if test="req.value != null">
+					#{req.value}
+				</if>
+				<if test="req.values != null">
+					<foreach collection="req.values" item="value" separator=",">
+						#{value}
+					</foreach>
+				</if>
+				<if test="req.suffix != null"> ${req.suffix}</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<!-- 数据库中表名为:bill的列名 -->
+	<sql id="bill_Column">
+		id,BorrowId,userid,Bmoney,Rmoney,Smoney,Btime,Rtime
+	</sql>
+
+	<!--获得类名为:Bill对应的数据库表的数据总行数 -->
+	<select id="getBillRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
+		select count(*) from bill
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</select>
+	
+	<!-- 获得类名为:Bill对应数据库中表的数据集合 -->
+	<select id="selectBill" parameterType="com.common.Assist" resultMap="result_Bill_Map">
+		select
+		<if test="distinct !=null">${distinct}</if>
+		<choose>
+			<when test="resultColumn!=null">${resultColumn}</when>
+			<otherwise>
+				<include refid="bill_Column" />
+			</otherwise>
+		</choose>
+		from bill
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+		<if test="order !=null">${order}</if>
+		<choose>
+			<when test="startRow !=null and rowSize !=null">LIMIT #{startRow},#{rowSize} </when>
+			<when test="rowSize !=null">LIMIT #{rowSize}</when>
+		</choose>
+	</select>
+	
+	<!-- 获得一个Bill对象,以参数Bill对象中不为空的属性作为条件进行查询 -->
+	<select id="selectBillObjSingle" parameterType="com.ccit.dml.Bill" resultMap="result_Bill_Map">
+		select
+		<include refid="bill_Column" />
+		from bill
+		<where>
+		<if test="id != null"> and id = #{id}</if>
+		<if test="borrowId != null"> and BorrowId = #{borrowId}</if>
+		<if test="userid != null"> and userid = #{userid}</if>
+		<if test="bmoney != null"> and Bmoney = #{bmoney}</if>
+		<if test="rmoney != null"> and Rmoney = #{rmoney}</if>
+		<if test="smoney != null"> and Smoney = #{smoney}</if>
+		<if test="btime != null"> and Btime = #{btime}</if>
+		<if test="rtime != null"> and Rtime = #{rtime}</if>
+		
+		</where>
+		LIMIT 1
+	</select>
+	
+	<!-- 获得Bill对象,以参数Bill对象中不为空的属性作为条件进行查询 -->
+	<select id="selectBillByObj" parameterType="com.ccit.dml.Bill" resultMap="result_Bill_Map">
+		select
+		<include refid="bill_Column" />
+		from bill
+		<where>
+		<if test="id != null"> and id = #{id}</if>
+		<if test="borrowId != null"> and BorrowId = #{borrowId}</if>
+		<if test="userid != null"> and userid = #{userid}</if>
+		<if test="bmoney != null"> and Bmoney = #{bmoney}</if>
+		<if test="rmoney != null"> and Rmoney = #{rmoney}</if>
+		<if test="smoney != null"> and Smoney = #{smoney}</if>
+		<if test="btime != null"> and Btime = #{btime}</if>
+		<if test="rtime != null"> and Rtime = #{rtime}</if>
+		
+		</where>
+	</select>
+
+	<!-- 将Bill插入到对应数据库的表中,包括属性值为null的数据 -->
+	<insert id="insertBill" parameterType="com.ccit.dml.Bill">
+		insert into 
+		bill (id,BorrowId,userid,Bmoney,Rmoney,Smoney,Btime,Rtime) 
+		values(#{id},#{borrowId},#{userid},#{bmoney},#{rmoney},#{smoney},#{btime},#{rtime})
+	</insert>
+
+	<!-- 将Bill中属性值不为null的数据,插入到对应数据库的表中 -->
+	<insert id="insertNotNullBill" parameterType="com.ccit.dml.Bill">
+		insert into bill
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="borrowId != null">BorrowId,</if>
+			<if test="userid != null">userid,</if>
+			<if test="bmoney != null">Bmoney,</if>
+			<if test="rmoney != null">Rmoney,</if>
+			<if test="smoney != null">Smoney,</if>
+			<if test="btime != null">Btime,</if>
+			<if test="rtime != null">Rtime,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="borrowId != null">#{borrowId},</if>
+			<if test="userid != null">#{userid},</if>
+			<if test="bmoney != null">#{bmoney},</if>
+			<if test="rmoney != null">#{rmoney},</if>
+			<if test="smoney != null">#{smoney},</if>
+			<if test="btime != null">#{btime},</if>
+			<if test="rtime != null">#{rtime},</if>
+		</trim>
+	</insert>
+
+	<!-- 将Bill批量插入到对应数据库的表中 -->
+	<insert id="insertBillByBatch" parameterType="ArrayList">
+		insert into bill(id,BorrowId,userid,Bmoney,Rmoney,Smoney,Btime,Rtime) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{id},#{borrowId},#{userid},#{bmoney},#{rmoney},#{smoney},#{btime},#{rtime})
+		</foreach>
+	</insert>
+	
+
+	<!-- 通过辅助工具Assist中的条件将Bill对应的数据库表的数据删除 -->
+	<delete id="deleteBillByAssist" parameterType="com.common.Assist">
+		delete from bill
+		<if test="require!=null">
+			<include refid="assist" />
+		</if>
+	</delete>
+	
+	
+	
+	<!-- 通过辅助工具Assist中的条件将Bill中的数据更新到数据库对应的表中,包括值为null的数据 -->
+	<update id="updateBill" parameterType="map">
+		update bill
+		<set>
+			id = #{enti.id},
+			BorrowId = #{enti.borrowId},
+			userid = #{enti.userid},
+			Bmoney = #{enti.bmoney},
+			Rmoney = #{enti.rmoney},
+			Smoney = #{enti.smoney},
+			Btime = #{enti.btime},
+			Rtime = #{enti.rtime},
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+
+	<!-- 通过辅助工具Assist中的条件将Bill中属性值不为null的数据更新到数据库对应的表中 -->
+	<update id="updateNotNullBill" parameterType="map">
+		update bill
+		<set>
+			<if test="enti.id != null">id = #{enti.id},</if>
+			<if test="enti.borrowId != null">BorrowId = #{enti.borrowId},</if>
+			<if test="enti.userid != null">userid = #{enti.userid},</if>
+			<if test="enti.bmoney != null">Bmoney = #{enti.bmoney},</if>
+			<if test="enti.rmoney != null">Rmoney = #{enti.rmoney},</if>
+			<if test="enti.smoney != null">Smoney = #{enti.smoney},</if>
+			<if test="enti.btime != null">Btime = #{enti.btime},</if>
+			<if test="enti.rtime != null">Rtime = #{enti.rtime},</if>
+		</set>
+		<if test="assist.require!=null">
+			<include refid="updateAssist" />
+		</if>
+	</update>
+</mapper>

@@ -9,14 +9,14 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class Creditgrade {
-	/**标识*/
+	/***/
 	private String id; 
-	/**名称*/
+	/***/
 	private String name; 
-	/**最小积分*/
-	private Integer integral; 
-	/**借款额*/
-	private Integer loanAmounts; 
+	/***/
+	private String integral; 
+	/***/
+	private String loanAmounts; 
 	/**
 	 * 实例化
 	 */
@@ -36,11 +36,11 @@ public class Creditgrade {
 		if (obj.get("name") instanceof String) {
 			this.setName((String) obj.get("name"));
 		}
-		if (obj.get("integral") instanceof Number) {
-			this.setIntegral(((Number) obj.get("integral")).intValue());
+		if (obj.get("integral") instanceof String) {
+			this.setIntegral((String) obj.get("integral"));
 		}
-		if (obj.get("loanAmounts") instanceof Number) {
-			this.setLoanAmounts(((Number) obj.get("loanAmounts")).intValue());
+		if (obj.get("loanAmounts") instanceof String) {
+			this.setLoanAmounts((String) obj.get("loanAmounts"));
 		}
 	}
 	
@@ -108,7 +108,7 @@ public class Creditgrade {
 	 * 
 	 * @return
 	 */
-	public Integer getIntegral() {
+	public String getIntegral() {
 		return integral;
 	}
 
@@ -117,7 +117,7 @@ public class Creditgrade {
 	 * 
 	 * @param integral
 	 */
-	public void setIntegral(Integer integral) {
+	public void setIntegral(String integral) {
 		this.integral = integral;
 	}
 	
@@ -126,7 +126,7 @@ public class Creditgrade {
 	 * 
 	 * @return
 	 */
-	public Integer getLoanAmounts() {
+	public String getLoanAmounts() {
 		return loanAmounts;
 	}
 
@@ -135,7 +135,7 @@ public class Creditgrade {
 	 * 
 	 * @param loanAmounts
 	 */
-	public void setLoanAmounts(Integer loanAmounts) {
+	public void setLoanAmounts(String loanAmounts) {
 		this.loanAmounts = loanAmounts;
 	}
 
