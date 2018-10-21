@@ -4,12 +4,18 @@
 	<!-- Permissions的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
 	<resultMap id="result_Permissions_Map" type="com.ccit.dml.Permissions">
 		<id column="ID" property="iD" />
-		<result column="auth_name" property="authName" />
+		<result column="auth_name" property="text" />
 		<result column="State" property="state" />
 		<result column="iconCls" property="iconCls" />
 		<result column="Pid" property="pid" />
 		<result column="Controller" property="controller" />
+		<result column="resourceid" property="resourceid" />
+		<result column="authtype" property="authtype" />
+		<result column="iframe" property="iframe" />
+		<result column="modulecn" property="modulecn" />
 	</resultMap>
+
+
 
 	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
 	<sql id="assist">
@@ -49,8 +55,18 @@
 
 	<!-- 数据库中表名为:permissions的列名 -->
 	<sql id="permissions_Column">
-		ID,auth_name,State,iconCls,Pid,Controller
+		ID,auth_name,State,iconCls,Pid,Controller,resourceid,authtype,iframe,modulecn
 	</sql>
+
+
+
+    <!--查询角色权限-->
+    <select id="selectrole" parameterType="String"  resultMap="result_Permissions_Map">
+       select * from permissions where authtype = 1 and
+       POSITION(ID IN (select PermissionsID from role where id=(select Role_ID from user WHERE id=#{ID})))!=0
+    </select>
+
+
 
 	<!--获得类名为:Permissions对应的数据库表的数据总行数 -->
 	<select id="getPermissionsRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
@@ -59,7 +75,7 @@
 			<include refid="assist" />
 		</if>
 	</select>
-	
+
 	<!-- 获得类名为:Permissions对应数据库中表的数据集合 -->
 	<select id="selectPermissions" parameterType="com.common.Assist" resultMap="result_Permissions_Map">
 		select
@@ -87,43 +103,51 @@
 		from permissions
 		where ID = #{id}
 	</select>
-	
+
 	<!-- 获得一个Permissions对象,以参数Permissions对象中不为空的属性作为条件进行查询 -->
 	<select id="selectPermissionsObjSingle" parameterType="com.ccit.dml.Permissions" resultMap="result_Permissions_Map">
 		select
 		<include refid="permissions_Column" />
 		from permissions
 		<where>
-		<if test="authName != null"> and auth_name = #{authName}</if>
+		<if test="text != null"> and auth_name = #{text}</if>
 		<if test="state != null"> and State = #{state}</if>
 		<if test="iconCls != null"> and iconCls = #{iconCls}</if>
 		<if test="pid != null"> and Pid = #{pid}</if>
 		<if test="controller != null"> and Controller = #{controller}</if>
+		<if test="resourceid != null"> and resourceid = #{resourceid}</if>
+		<if test="authtype != null"> and authtype = #{authtype}</if>
+		<if test="iframe != null"> and iframe = #{iframe}</if>
+		<if test="modulecn != null"> and modulecn = #{modulecn}</if>
 		<if test="iD != null"> and ID = #{iD} </if>
 		</where>
 		LIMIT 1
 	</select>
-	
+
 	<!-- 获得Permissions对象,以参数Permissions对象中不为空的属性作为条件进行查询 -->
 	<select id="selectPermissionsByObj" parameterType="com.ccit.dml.Permissions" resultMap="result_Permissions_Map">
 		select
 		<include refid="permissions_Column" />
 		from permissions
 		<where>
-		<if test="authName != null"> and auth_name = #{authName}</if>
+		<if test="text != null"> and auth_name = #{text}</if>
 		<if test="state != null"> and State = #{state}</if>
 		<if test="iconCls != null"> and iconCls = #{iconCls}</if>
 		<if test="pid != null"> and Pid = #{pid}</if>
 		<if test="controller != null"> and Controller = #{controller}</if>
+		<if test="resourceid != null"> and resourceid = #{resourceid}</if>
+		<if test="authtype != null"> and authtype = #{authtype}</if>
+		<if test="iframe != null"> and iframe = #{iframe}</if>
+		<if test="modulecn != null"> and modulecn = #{modulecn}</if>
 		<if test="iD != null"> and ID = #{iD} </if>
 		</where>
 	</select>
 
 	<!-- 将Permissions插入到对应数据库的表中,包括属性值为null的数据 -->
 	<insert id="insertPermissions" parameterType="com.ccit.dml.Permissions">
-		insert into 
-		permissions (ID,auth_name,State,iconCls,Pid,Controller) 
-		values(#{iD},#{authName},#{state},#{iconCls},#{pid},#{controller})
+		insert into
+		permissions (ID,auth_name,State,iconCls,Pid,Controller,resourceid,authtype,iframe,modulecn)
+		values(#{iD},#{text},#{state},#{iconCls},#{pid},#{controller},#{resourceid},#{authtype},#{iframe},#{modulecn})
 	</insert>
 
 	<!-- 将Permissions中属性值不为null的数据,插入到对应数据库的表中 -->
@@ -131,31 +155,39 @@
 		insert into permissions
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="iD != null">ID,</if>
-			<if test="authName != null">auth_name,</if>
+			<if test="text != null">auth_name,</if>
 			<if test="state != null">State,</if>
 			<if test="iconCls != null">iconCls,</if>
 			<if test="pid != null">Pid,</if>
 			<if test="controller != null">Controller,</if>
+			<if test="resourceid != null">resourceid,</if>
+			<if test="authtype != null">authtype,</if>
+			<if test="iframe != null">iframe,</if>
+			<if test="modulecn != null">modulecn,</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="iD != null">#{iD},</if>
-			<if test="authName != null">#{authName},</if>
+			<if test="text != null">#{text},</if>
 			<if test="state != null">#{state},</if>
 			<if test="iconCls != null">#{iconCls},</if>
 			<if test="pid != null">#{pid},</if>
 			<if test="controller != null">#{controller},</if>
+			<if test="resourceid != null">#{resourceid},</if>
+			<if test="authtype != null">#{authtype},</if>
+			<if test="iframe != null">#{iframe},</if>
+			<if test="modulecn != null">#{modulecn},</if>
 		</trim>
 	</insert>
 
 	<!-- 将Permissions批量插入到对应数据库的表中 -->
 	<insert id="insertPermissionsByBatch" parameterType="ArrayList">
-		insert into permissions(ID,auth_name,State,iconCls,Pid,Controller) values
+		insert into permissions(ID,auth_name,State,iconCls,Pid,Controller,resourceid,authtype,iframe,modulecn) values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{iD},#{authName},#{state},#{iconCls},#{pid},#{controller})
+			(#{iD},#{text},#{state},#{iconCls},#{pid},#{controller},#{resourceid},#{authtype},#{iframe},#{modulecn})
 		</foreach>
 	</insert>
-	
+
 	<!-- 通过Permissions的id将数据库表中对应的数据删除 -->
 	<delete id="deletePermissionsById" parameterType="String">
 		delete from permissions
@@ -169,43 +201,55 @@
 			<include refid="assist" />
 		</if>
 	</delete>
-	
+
 	<!-- 通过Permissions的id将Permissions的数据更新到数据库中对应的表,包括值null的数据 -->
-	<update id="updatePermissionsById" parameterType="com.ccit.dml.Permissions"> 
+	<update id="updatePermissionsById" parameterType="com.ccit.dml.Permissions">
 		update permissions set
 		<set>
-			auth_name = #{authName} , 
-			State = #{state} , 
-			iconCls = #{iconCls} , 
-			Pid = #{pid} , 
-			Controller = #{controller} , 
+			auth_name = #{text} ,
+			State = #{state} ,
+			iconCls = #{iconCls} ,
+			Pid = #{pid} ,
+			Controller = #{controller} ,
+			resourceid = #{resourceid} ,
+			authtype = #{authtype} ,
+			iframe = #{iframe} ,
+			modulecn = #{modulecn} ,
 		</set>
 		where ID = #{iD}
 	</update>
-	
+
 	<!-- 通过Permissions的id将Permissions中属性值不为null的数据更新到数据库对应的表中 -->
 	<update id="updateNotNullPermissionsById" parameterType="com.ccit.dml.Permissions">
 		update permissions
 		<set>
-					<if test="authName != null">auth_name = #{authName},</if>
+					<if test="text != null">auth_name = #{text},</if>
 					<if test="state != null">State = #{state},</if>
 					<if test="iconCls != null">iconCls = #{iconCls},</if>
 					<if test="pid != null">Pid = #{pid},</if>
 					<if test="controller != null">Controller = #{controller},</if>
+					<if test="resourceid != null">resourceid = #{resourceid},</if>
+					<if test="authtype != null">authtype = #{authtype},</if>
+					<if test="iframe != null">iframe = #{iframe},</if>
+					<if test="modulecn != null">modulecn = #{modulecn},</if>
 		</set>
 		where ID = #{iD}
 	</update>
-	
+
 	<!-- 通过辅助工具Assist中的条件将Permissions中的数据更新到数据库对应的表中,包括值为null的数据 -->
 	<update id="updatePermissions" parameterType="map">
 		update permissions
 		<set>
 			ID = #{enti.iD},
-			auth_name = #{enti.authName},
+			auth_name = #{enti.text},
 			State = #{enti.state},
 			iconCls = #{enti.iconCls},
 			Pid = #{enti.pid},
 			Controller = #{enti.controller},
+			resourceid = #{enti.resourceid},
+			authtype = #{enti.authtype},
+			iframe = #{enti.iframe},
+			modulecn = #{enti.modulecn},
 		</set>
 		<if test="assist.require!=null">
 			<include refid="updateAssist" />
@@ -217,11 +261,15 @@
 		update permissions
 		<set>
 			<if test="enti.iD != null">ID = #{enti.iD},</if>
-			<if test="enti.authName != null">auth_name = #{enti.authName},</if>
+			<if test="enti.text != null">auth_name = #{enti.text},</if>
 			<if test="enti.state != null">State = #{enti.state},</if>
 			<if test="enti.iconCls != null">iconCls = #{enti.iconCls},</if>
 			<if test="enti.pid != null">Pid = #{enti.pid},</if>
 			<if test="enti.controller != null">Controller = #{enti.controller},</if>
+			<if test="enti.resourceid != null">resourceid = #{enti.resourceid},</if>
+			<if test="enti.authtype != null">authtype = #{enti.authtype},</if>
+			<if test="enti.iframe != null">iframe = #{enti.iframe},</if>
+			<if test="enti.modulecn != null">modulecn = #{enti.modulecn},</if>
 		</set>
 		<if test="assist.require!=null">
 			<include refid="updateAssist" />

@@ -47,4 +47,9 @@ public interface PermissionsService {
 	 * @return
 	 */
 	String deleteById(String id);
+
+    /**
+     * 查询角色权限
+     */
+    String Selectpermissions(String id);
 }

@@ -7,6 +7,8 @@
 		<result column="Role_id" property="roleId" />
 		<result column="PermissionsID" property="permissionsID" />
 		<result column="PermissionsController" property="permissionsController" />
+		<result column="RoleName" property="roleName" />
+		<result column="Roleflag" property="roleflag" />
 	</resultMap>
 
 	<!-- assist是查询辅助工具类, ${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
@@ -47,8 +49,12 @@
 
 	<!-- 数据库中表名为:role的列名 -->
 	<sql id="role_Column">
-		id,Role_id,PermissionsID,PermissionsController
+		id,Role_id,PermissionsID,PermissionsController,RoleName,Roleflag
 	</sql>
+
+    <select id="findPermissionsID" parameterType="java.lang.String" resultType="java.lang.String">
+        select PermissionsID from role r join user u on u.Role_ID = r.Role_id where u.id=#{id}
+    </select>
 
 	<!--获得类名为:Role对应的数据库表的数据总行数 -->
 	<select id="getRoleRowCount" parameterType="com.common.Assist" resultType="java.lang.Long">
@@ -95,6 +101,8 @@
 		<if test="roleId != null"> and Role_id = #{roleId}</if>
 		<if test="permissionsID != null"> and PermissionsID = #{permissionsID}</if>
 		<if test="permissionsController != null"> and PermissionsController = #{permissionsController}</if>
+		<if test="roleName != null"> and RoleName = #{roleName}</if>
+		<if test="roleflag != null"> and Roleflag = #{roleflag}</if>
 		<if test="id != null"> and id = #{id} </if>
 		</where>
 		LIMIT 1
@@ -109,6 +117,8 @@
 		<if test="roleId != null"> and Role_id = #{roleId}</if>
 		<if test="permissionsID != null"> and PermissionsID = #{permissionsID}</if>
 		<if test="permissionsController != null"> and PermissionsController = #{permissionsController}</if>
+		<if test="roleName != null"> and RoleName = #{roleName}</if>
+		<if test="roleflag != null"> and Roleflag = #{roleflag}</if>
 		<if test="id != null"> and id = #{id} </if>
 		</where>
 	</select>
@@ -116,8 +126,8 @@
 	<!-- 将Role插入到对应数据库的表中,包括属性值为null的数据 -->
 	<insert id="insertRole" parameterType="com.ccit.dml.Role">
 		insert into 
-		role (id,Role_id,PermissionsID,PermissionsController) 
-		values(#{id},#{roleId},#{permissionsID},#{permissionsController})
+		role (id,Role_id,PermissionsID,PermissionsController,RoleName,Roleflag) 
+		values(#{id},#{roleId},#{permissionsID},#{permissionsController},#{roleName},#{roleflag})
 	</insert>
 
 	<!-- 将Role中属性值不为null的数据,插入到对应数据库的表中 -->
@@ -128,21 +138,25 @@
 			<if test="roleId != null">Role_id,</if>
 			<if test="permissionsID != null">PermissionsID,</if>
 			<if test="permissionsController != null">PermissionsController,</if>
+			<if test="roleName != null">RoleName,</if>
+			<if test="roleflag != null">Roleflag,</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null">#{id},</if>
 			<if test="roleId != null">#{roleId},</if>
 			<if test="permissionsID != null">#{permissionsID},</if>
 			<if test="permissionsController != null">#{permissionsController},</if>
+			<if test="roleName != null">#{roleName},</if>
+			<if test="roleflag != null">#{roleflag},</if>
 		</trim>
 	</insert>
 
 	<!-- 将Role批量插入到对应数据库的表中 -->
 	<insert id="insertRoleByBatch" parameterType="ArrayList">
-		insert into role(id,Role_id,PermissionsID,PermissionsController) values
+		insert into role(id,Role_id,PermissionsID,PermissionsController,RoleName,Roleflag) values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{id},#{roleId},#{permissionsID},#{permissionsController})
+			(#{id},#{roleId},#{permissionsID},#{permissionsController},#{roleName},#{roleflag})
 		</foreach>
 	</insert>
 	
@@ -167,6 +181,8 @@
 			Role_id = #{roleId} , 
 			PermissionsID = #{permissionsID} , 
 			PermissionsController = #{permissionsController} , 
+			RoleName = #{roleName} , 
+			Roleflag = #{roleflag} , 
 		</set>
 		where id = #{id}
 	</update>
@@ -178,6 +194,8 @@
 					<if test="roleId != null">Role_id = #{roleId},</if>
 					<if test="permissionsID != null">PermissionsID = #{permissionsID},</if>
 					<if test="permissionsController != null">PermissionsController = #{permissionsController},</if>
+					<if test="roleName != null">RoleName = #{roleName},</if>
+					<if test="roleflag != null">Roleflag = #{roleflag},</if>
 		</set>
 		where id = #{id}
 	</update>
@@ -190,6 +208,8 @@
 			Role_id = #{enti.roleId},
 			PermissionsID = #{enti.permissionsID},
 			PermissionsController = #{enti.permissionsController},
+			RoleName = #{enti.roleName},
+			Roleflag = #{enti.roleflag},
 		</set>
 		<if test="assist.require!=null">
 			<include refid="updateAssist" />
@@ -204,6 +224,8 @@
 			<if test="enti.roleId != null">Role_id = #{enti.roleId},</if>
 			<if test="enti.permissionsID != null">PermissionsID = #{enti.permissionsID},</if>
 			<if test="enti.permissionsController != null">PermissionsController = #{enti.permissionsController},</if>
+			<if test="enti.roleName != null">RoleName = #{enti.roleName},</if>
+			<if test="enti.roleflag != null">Roleflag = #{enti.roleflag},</if>
 		</set>
 		<if test="assist.require!=null">
 			<include refid="updateAssist" />

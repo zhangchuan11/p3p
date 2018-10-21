@@ -9,14 +9,18 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class Role {
-	/***/
+	/**标识*/
 	private String id; 
-	/***/
+	/**角色*/
 	private String roleId; 
-	/**Ȩ*/
+	/**权限id*/
 	private String permissionsID; 
-	/**Ȩ*/
+	/**权限控制器*/
 	private String permissionsController; 
+	/***/
+	private String roleName; 
+	/***/
+	private String roleflag; 
 	/**
 	 * 实例化
 	 */
@@ -42,6 +46,12 @@ public class Role {
 		if (obj.get("permissionsController") instanceof String) {
 			this.setPermissionsController((String) obj.get("permissionsController"));
 		}
+		if (obj.get("roleName") instanceof String) {
+			this.setRoleName((String) obj.get("roleName"));
+		}
+		if (obj.get("roleflag") instanceof String) {
+			this.setRoleflag((String) obj.get("roleflag"));
+		}
 	}
 	
 	/**
@@ -62,6 +72,12 @@ public class Role {
 		}
 		if (this.getPermissionsController() != null) {
 			result.put("permissionsController",this.getPermissionsController());
+		}
+		if (this.getRoleName() != null) {
+			result.put("roleName",this.getRoleName());
+		}
+		if (this.getRoleflag() != null) {
+			result.put("roleflag",this.getRoleflag());
 		}
 		return result;
 	}
@@ -138,10 +154,46 @@ public class Role {
 	public void setPermissionsController(String permissionsController) {
 		this.permissionsController = permissionsController;
 	}
+	
+	/**
+	 * 获取roleName
+	 * 
+	 * @return
+	 */
+	public String getRoleName() {
+		return roleName;
+	}
+
+	/**
+	 * 设置roleName
+	 * 
+	 * @param roleName
+	 */
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	
+	/**
+	 * 获取roleflag
+	 * 
+	 * @return
+	 */
+	public String getRoleflag() {
+		return roleflag;
+	}
+
+	/**
+	 * 设置roleflag
+	 * 
+	 * @param roleflag
+	 */
+	public void setRoleflag(String roleflag) {
+		this.roleflag = roleflag;
+	}
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + " , roleId=" + roleId + " , permissionsID=" + permissionsID + " , permissionsController=" + permissionsController + "  ]";
+		return "Role [id=" + id + " , roleId=" + roleId + " , permissionsID=" + permissionsID + " , permissionsController=" + permissionsController + " , roleName=" + roleName + " , roleflag=" + roleflag + "  ]";
 	
 	}
 	

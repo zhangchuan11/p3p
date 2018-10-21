@@ -2,13 +2,16 @@ package com.ccit.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ccit.dao.PermissionsMapper;
+import com.ccit.dao.RoleMapper;
 import com.ccit.dml.Permissions;
+import com.ccit.dml.Role;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 /**
  * Permissions的服务接口的实现类
  * 
@@ -21,6 +24,8 @@ public class PermissionsServiceImpl implements PermissionsService {
 
 	@Autowired
 	private PermissionsMapper permissionsDao;
+	@Autowired
+    private RoleMapper roleMapper;
 	// TODO 当你看到这个方法时你应该创建一个工具类做通用的方法,定义自己的返回格式化
 	private static final int C200 = 200;
 	private static final int C412 = 412;
@@ -100,6 +105,21 @@ public class PermissionsServiceImpl implements PermissionsService {
 		}
 		return resultFormat(C200, result);
 	}
+
+    @Override
+    public String Selectpermissions(String id) {
+        if (id == null) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("执行通过Permissions的id删除Permissions-->失败:id不能为空");
+            }
+            return resultFormat(C412, null);
+        }
+        List<Permissions> result = permissionsDao.selectrole(id);
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("执行通过Permissions的id删除Permissions-->结果:", result);
+        }
+        return resultFormat(C200, result);
+    }
 
 
 }

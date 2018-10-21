@@ -1,8 +1,8 @@
 package com.ccit.dao;
 import java.util.List;
 
-import com.common.Assist;
 import com.ccit.dml.Permissions;
+import com.common.Assist;
 
 import org.apache.ibatis.annotations.Param;
 /**
@@ -12,6 +12,12 @@ import org.apache.ibatis.annotations.Param;
  *
  */
 public interface PermissionsMapper {
+    /**
+     * 查询权限
+     */
+    List<Permissions> selectrole(@Param(value = "ID") String ID);
+
+
 
 	/**
 	 * 获得Permissions数据的总行数,可以通过辅助工具Assist进行条件查询,如果没有条件则传入null
